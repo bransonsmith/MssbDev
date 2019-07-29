@@ -1,0 +1,6 @@
+.home-card {
+    box-shadow: var(--card-shadow);
+    min-height: 1000px;
+    max-width: var(--content-width);
+    align-self: center;
+}

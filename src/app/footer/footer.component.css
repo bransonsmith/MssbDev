@@ -1,0 +1,16 @@
+.link-row button,
+.link-row a {
+  margin-right: 8px;
+  color: var(--footer-link-color)
+}
+
+.cr-text {
+    font-size: 10px;
+}
+
+.ribbon {
+}
+
+.footer {
+    max-width: var(--headfoot-width);
+}
