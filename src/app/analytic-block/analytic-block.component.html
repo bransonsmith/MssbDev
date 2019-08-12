@@ -1,0 +1,28 @@
+<div *ngIf="analyticBlock">
+
+    <mat-card class="analytics-card">
+
+        <div class="top-row">
+            <div class="rank">
+                <div class="hash-font">#</div>
+                <div class="rank-font">{{analyticBlock.rank}}</div>
+            </div>
+    
+            <div class="out-of">
+                of {{analyticBlock.outOf}}
+            </div>
+        </div>
+    
+        <div class="bot-row">
+            <div class="symbol">
+                <img mat-card-image src={{analyticBlock.symbolImgPath}} alt="X" class="symbol-img">
+            </div>
+    
+            <div class="title">
+                {{analyticBlock.name}}
+            </div>
+        </div>   
+
+    </mat-card>
+
+</div>

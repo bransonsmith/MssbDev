@@ -1,0 +1,143 @@
+<div *ngIf="tile">
+    <mat-card class="details-card">
+
+        <div class="basic-detail-section section-card-">
+            
+            <mat-card class="image-card section-card">
+                <mat-card-title>
+                    {{tile.name}}
+                </mat-card-title>
+
+                <img mat-card-image src={{tile.imgPath}} alt="Detailed Picture" class="specific-img">
+            </mat-card>
+
+            <mat-card class="detail-card section-card">
+                
+                <div class="statRow">
+                    <div class="statName">Number</div>
+                    <div class="statValue">{{tile.number}}</div>
+
+                    <div class="statName">Info</div>
+                    <div class="statValue">{{tile.info}}</div>
+                </div>
+                
+                <div class="statRow">
+                    <div class="statName">Batting</div>
+                    <div class="statValue">{{tile.bat}}</div>
+                    
+                    <div class="statName">Pitching</div>
+                    <div class="statValue">{{tile.pitch}}</div>
+                </div>
+                                
+                <div class="statRow">
+                    <div class="statName">Running</div>
+                    <div class="statValue">{{tile.run}}</div>
+
+                    <div class="statName">Pitching</div>
+                    <div class="statValue">{{tile.pitch}}</div>
+                </div>
+                                
+                <div class="statRow">
+                    <div class="statName">Fielding</div>
+                    <div class="statValue">{{tile.field}}</div>
+
+                    <div class="statName">Number</div>
+                    <div class="statValue">{{tile.number}}</div>
+                </div>
+                                
+                <div class="statRow">
+                    <div class="statName">Pitching</div>
+                    <div class="statValue">{{tile.pitch}}</div>
+
+                    <div class="statName">Fielding</div>
+                    <div class="statValue">{{tile.field}}</div>
+                </div>
+       
+                <div class="statRow">
+                    <div class="statName">Info</div>
+                    <div class="statValue">{{tile.info}}</div>
+
+                    <div class="statName">Number</div>
+                    <div class="statValue">{{tile.number}}</div>
+                </div>
+
+                <div class="statRow">
+                    <div class="statName">Fielding</div>
+                    <div class="statValue">{{tile.field}}</div>
+
+                    <div class="statName">Number</div>
+                    <div class="statValue">{{tile.number}}</div>
+                </div>
+                                
+                <div class="statRow">
+                    <div class="statName">Pitching</div>
+                    <div class="statValue">{{tile.pitch}}</div>
+
+                    <div class="statName">Fielding</div>
+                    <div class="statValue">{{tile.field}}</div>
+                </div>
+        
+                <div class="statRow">
+                    <div class="statName">Info</div>
+                    <div class="statValue">{{tile.info}}</div>
+
+                    <div class="statName">Number</div>
+                    <div class="statValue">{{tile.number}}</div>
+                </div>
+
+            </mat-card>
+
+        </div>
+
+
+
+        <div class="analytics-section">
+            <app-analytic-block [analyticBlock]="analyticBlock1"></app-analytic-block>
+            <app-analytic-block [analyticBlock]="analyticBlock1"></app-analytic-block>
+            <app-analytic-block [analyticBlock]="analyticBlock1"></app-analytic-block>
+            <app-analytic-block [analyticBlock]="analyticBlock1"></app-analytic-block>
+        </div>
+
+
+
+        <div class="performance-section">
+            <mat-card class="table-card section-card">
+                <table mat-table [dataSource]="seasons" class="year-table">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="num1">
+                        <th mat-header-cell *matHeaderCellDef> year </th>
+                        <td mat-cell *matCellDef="let element"> {{element.num1}} </td>
+                    </ng-container>
+                    
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="num2">
+                        <th mat-header-cell *matHeaderCellDef> num1 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.num2}} </td>
+                    </ng-container>
+                    
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="num3">
+                        <th mat-header-cell *matHeaderCellDef> num3 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.num3}} </td>
+                    </ng-container>
+                    
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="num4">
+                        <th mat-header-cell *matHeaderCellDef> num4 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.num4}} </td>
+                    </ng-container>
+    
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="num5">
+                        <th mat-header-cell *matHeaderCellDef> num5 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.num5}} </td>
+                    </ng-container>
+                    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-card>
+        </div>
+
+    </mat-card>    
+</div>

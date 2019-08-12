@@ -6,4 +6,5 @@ export class Tile {
     run: number;
     field: number;
     pitch: number;
+    imgPath: string;
 }

@@ -58,6 +58,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import 'hammerjs';
 import { RegisterComponent } from './register/register.component';
 import { SortStatComponent } from './sort-stat/sort-stat.component';
+import { DetailsComponent } from './details/details.component';
+import { AnalyticBlockComponent } from './analytic-block/analytic-block.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { SortStatComponent } from './sort-stat/sort-stat.component';
     LoginComponent,
     RegisterComponent,
     SortStatComponent,
+    DetailsComponent,
+    AnalyticBlockComponent,
   ],
   imports: [
     BrowserModule,

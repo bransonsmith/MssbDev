@@ -11,8 +11,6 @@
     </mat-toolbar>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
     <mat-card-content>
-
-
         <mat-grid-list cols="4" rowHeight="125px">
             <mat-grid-tile
                 *ngFor="let tile of tiles"
@@ -20,24 +18,22 @@
                 [rowspan]=1
                 [style.background]="tile.color">
 
-                <div matRipple [matRippleCentered]="true">
-                    <ng-content>
-                        
-                    </ng-content>
+                <div matRipple [matRippleCentered]="true" (click)="onTileClick(tile)">
+                    <ng-content></ng-content>
                     <mat-card class="tile">     
-                            <div class="top-row">
-                                <div class="tile-number"><div class="tile-number-text">{{getNumber(tile)}}</div></div>
-                                <div class="tile-name">{{tile.name}}</div>
-                            </div>   
-         
-                            <div class="stat">
-                                <app-sort-stat [sortStat]="getBatStat(tile)"></app-sort-stat> 
-                                <app-sort-stat [sortStat]="getRunStat(tile)"></app-sort-stat> 
-                                <app-sort-stat [sortStat]="getFieldStat(tile)"></app-sort-stat> 
-                                <app-sort-stat [sortStat]="getPitchStat(tile)"></app-sort-stat> 
-                            </div>
-                            <!-- <app-sort-stat [name]="batting" [value]={{tile.bat}} [primary]=false></app-sort-stat> -->
-                        </mat-card>
+                        <div class="top-row">
+                            <div class="tile-number"><div class="tile-number-text">{{getNumber(tile)}}</div></div>
+                            <div class="tile-name">{{tile.name}}</div>
+                        </div>   
+        
+                        <div class="stat">
+                            <app-sort-stat [sortStat]="getBatStat(tile)"></app-sort-stat> 
+                            <app-sort-stat [sortStat]="getRunStat(tile)"></app-sort-stat> 
+                            <app-sort-stat [sortStat]="getFieldStat(tile)"></app-sort-stat> 
+                            <app-sort-stat [sortStat]="getPitchStat(tile)"></app-sort-stat> 
+                        </div>
+                        <!-- <app-sort-stat [name]="batting" [value]={{tile.bat}} [primary]=false></app-sort-stat> -->
+                    </mat-card>
                 </div>
 
                 

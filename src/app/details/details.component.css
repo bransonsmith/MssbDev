@@ -1,0 +1,56 @@
+table {
+    width: 100%;
+}
+
+.details-card {
+    box-shadow: var(--card-shadow);
+    min-height: 1000px;
+}
+
+.year-table {
+    
+}
+
+.basic-detail-section {
+    display: flex;
+    height: 350px;
+}
+
+.section-card {
+    background-color: var(--object-color);
+    color: var(object-text-color);
+    margin: 10px;
+    padding: 8px;
+}
+
+.analytics-section {
+    display: flex;
+    justify-content: center;
+}
+
+.image-card {
+    width: 220px;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.specific-img {
+    width: 220px;
+    justify-content: center;
+    margin-left: 0px;
+}
+
+.statRow {
+    display: flex;
+    min-height: 25px;
+}
+
+.statName {
+    width: 80px;
+    text-align: right;
+}
+
+.statValue {
+    width: 145px;
+    padding-left: 12px;
+}
