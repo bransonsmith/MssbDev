@@ -9,6 +9,10 @@ export class TileService {
 
   constructor() { }
 
+  getTiles(): Tile[] {
+    return TILES;
+  }
+
   getTile(id: number): Tile {
     let tileToReturn = null;
     TILES.forEach(tile => {
