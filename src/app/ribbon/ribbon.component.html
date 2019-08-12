@@ -1,6 +1,14 @@
 <mat-toolbar class= "ribbon">
     <mat-toolbar-row>
       <span><button (click)="homeButtonClick($event)" mat-button class="home-button">Website Title</button></span>
+
+      <div class="ribbon-button">
+          <button (click)="handleCollectionsClick($event)" mat-button class="collections-button">
+            <!-- <mat-icon class="collections-icon" aria-hidden="false" aria-label="Collection icon">group</mat-icon> -->
+            <div class="ribbon-font">Collections</div>
+          </button>
+      </div>
+
       <span class="ribbon-spacer"></span>
       <button (click)="handleClick($event)" mat-button class="user-button"><mat-icon class="user-icon" aria-hidden="false" aria-label="User icon">person</mat-icon></button>
     </mat-toolbar-row>

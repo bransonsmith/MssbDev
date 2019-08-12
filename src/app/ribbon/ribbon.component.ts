@@ -21,6 +21,9 @@ export class RibbonComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
+  handleCollectionsClick(event: Event) {
+    this.router.navigateByUrl('collections');
+  }
 
   homeButtonClick(event: Event) {
     this.router.navigateByUrl('home');

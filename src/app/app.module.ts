@@ -60,6 +60,7 @@ import { RegisterComponent } from './register/register.component';
 import { SortStatComponent } from './sort-stat/sort-stat.component';
 import { DetailsComponent } from './details/details.component';
 import { AnalyticBlockComponent } from './analytic-block/analytic-block.component';
+import { CollectionsComponent } from './collections/collections.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { AnalyticBlockComponent } from './analytic-block/analytic-block.componen
     SortStatComponent,
     DetailsComponent,
     AnalyticBlockComponent,
+    CollectionsComponent,
   ],
   imports: [
     BrowserModule,
