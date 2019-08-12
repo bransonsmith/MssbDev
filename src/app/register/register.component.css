@@ -1,0 +1,5 @@
+
+.submit-button {
+    background-color: var(--secondary-color);
+    box-shadow: var(--card-shadow);    
+}

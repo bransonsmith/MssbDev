@@ -52,6 +52,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import 'hammerjs';
+import { RegisterComponent } from './register/register.component';
+import { SortStatComponent } from './sort-stat/sort-stat.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +67,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PageNotFoundComponent,
     FooterComponent,
     RibbonComponent,
+    LoginComponent,
+    RegisterComponent,
+    SortStatComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,7 +119,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PortalModule,
     ScrollingModule,
     BrowserAnimationsModule,
-    
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

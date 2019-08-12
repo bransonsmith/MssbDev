@@ -1,0 +1,21 @@
+.primary-text {
+    font:bold;
+    font-size: 14px;
+    color: var(--accent-color);
+    display: flex;
+}
+
+.normal-text {
+    font-size: 13px;
+    display: flex;
+}
+
+.name-col {
+    width: 55px;
+    padding: 1px;
+}
+
+.stat-col {
+    width: 20px;
+    padding: 1px;
+}

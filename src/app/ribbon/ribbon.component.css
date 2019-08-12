@@ -2,10 +2,13 @@
 .user-button {
   margin-right: 8px;
   background-color: var(--secondary-color);
-  /* width: 10%;
-  max-width: 8px;
-  align-content: center; */
-  /* box-shadow: var(--thin-shadow); */
+}
+
+.home-button {
+    margin-right: 8px;
+    background-color: var(--primary-color);
+    font: bold;
+    font-size: 26px;
 }
 
 .user-icon {

@@ -3,11 +3,16 @@
 
 :root {
 
-    --headfoot-width: 630px;
-    --content-width: 600px;
+    --content-width: 800px;
 
     --primary-color: rgb(51, 255, 160);
     --secondary-color: rgb(255, 255, 255);
+    --accent-color: rgb(59, 143, 253);
+    --object-color: rgb(247, 247, 247);
+    --object-color-brighter: rgb(225, 238, 255);
+    --object-fancy-text-color: rgb(0, 0, 0);
+    --object-text-color: rgb(0, 0, 0);
+
     --footer-link-color: rgb(0, 0, 0);
 
     --simple-shadow: 1px 1px 3px #888888;

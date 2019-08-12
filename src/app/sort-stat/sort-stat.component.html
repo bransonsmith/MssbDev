@@ -1,0 +1,12 @@
+<div *ngIf="isStatPrimary()">
+    <div class="primary-text">
+        <div class="name-col">{{sortStat.name}}</div>
+        <div class="stat-col">{{sortStat.value}}</div>
+    </div>
+</div>
+<div *ngIf="isNotPrimary()">
+    <div class="normal-text">
+        <div class="name-col">{{sortStat.name}}</div>
+        <div class="stat-col">{{sortStat.value}}</div>
+    </div>    
+</div>

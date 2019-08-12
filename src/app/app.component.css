@@ -1,11 +1,15 @@
 .footer-spacer{
     margin-top: 10px;
-    max-width: var(--headfoot-width);
+    
 }
 .header-spacer{
     margin-top: 10px;
-    max-width: var(--headfoot-width);
+    
 }
 .divider {
-    max-width: var(--headfoot-width);    
+    
+}
+.all-content {
+    max-width: var(--content-width);
+    margin: auto;
 }

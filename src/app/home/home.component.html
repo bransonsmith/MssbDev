@@ -1,18 +1,57 @@
 <mat-card class="home-card">
-    <mat-card-header>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
+    <mat-toolbar>
+        <div class="sort-text">Sort By:</div>
+        <button mat-button (click)="sortByNumber()" class="sort-by-button">number</button>
+        <button mat-button (click)="sortByName()" class="sort-by-button">name</button>
+        <button mat-button (click)="sortByBatting()" class="sort-by-button">batting</button>
+        <button mat-button (click)="sortByRunning()" class="sort-by-button">running</button>
+        <button mat-button (click)="sortByFielding()" class="sort-by-button">fielding</button>
+        <button mat-button (click)="sortByPitching()" class="sort-by-button">pitching</button>
+        <button mat-button (click)="sortByRandom()" class="sort-by-button">shuffle</button>
+    </mat-toolbar>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
     <mat-card-content>
-        <p>
+
+
+        <mat-grid-list cols="4" rowHeight="125px">
+            <mat-grid-tile
+                *ngFor="let tile of tiles"
+                [colspan]=1
+                [rowspan]=1
+                [style.background]="tile.color">
+
+                <div matRipple [matRippleCentered]="true">
+                    <ng-content>
+                        
+                    </ng-content>
+                    <mat-card class="tile">     
+                            <div class="top-row">
+                                <div class="tile-number"><div class="tile-number-text">{{getNumber(tile)}}</div></div>
+                                <div class="tile-name">{{tile.name}}</div>
+                            </div>   
+         
+                            <div class="stat">
+                                <app-sort-stat [sortStat]="getBatStat(tile)"></app-sort-stat> 
+                                <app-sort-stat [sortStat]="getRunStat(tile)"></app-sort-stat> 
+                                <app-sort-stat [sortStat]="getFieldStat(tile)"></app-sort-stat> 
+                                <app-sort-stat [sortStat]="getPitchStat(tile)"></app-sort-stat> 
+                            </div>
+                            <!-- <app-sort-stat [name]="batting" [value]={{tile.bat}} [primary]=false></app-sort-stat> -->
+                        </mat-card>
+                </div>
+
+                
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <!-- <p>
         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.
-        </p>
+        </p> -->
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
+        <!-- <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button> -->
     </mat-card-actions>
 </mat-card>
