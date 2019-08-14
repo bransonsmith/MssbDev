@@ -62,7 +62,6 @@ import { DetailsComponent } from './details/details.component';
 import { AnalyticBlockComponent } from './analytic-block/analytic-block.component';
 import { CollectionsComponent } from './collections/collections.component';
 import { CharacterComponent } from './+character/character/character.component';
-import { RandomTeamsComponent } from './random-teams/random-teams.component';
 import { MatchUpComponent } from './match-up/match-up.component';
 
 @NgModule({
@@ -80,7 +79,6 @@ import { MatchUpComponent } from './match-up/match-up.component';
     AnalyticBlockComponent,
     CollectionsComponent,
     CharacterComponent,
-    RandomTeamsComponent,
     MatchUpComponent,
   ],
   imports: [

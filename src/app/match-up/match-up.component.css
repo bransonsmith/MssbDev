@@ -1,0 +1,193 @@
+.home-card {
+    box-shadow: var(--card-shadow);
+    min-height: 1000px;
+}
+
+.rosters-section {
+    min-height: 800px;
+}
+
+.character-rect {
+    display: flex;
+    background-color: var(--object-color);
+    color: var(--object-text-color);
+    width: 220px;
+    height: 70px;
+    align-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    margin: 12px;
+}
+.character-rect:hover {
+    background-color: var(--object-color-brighter);
+    box-shadow: var(--card-shadow);
+    border-color: rgb(255, 47, 92);
+    border-width: 3px;
+    border-style: solid;
+}
+
+.right-col {
+    width: 100%;
+}
+
+.right-col-top {
+
+}
+
+.right-col-bot {
+    margin: auto;
+}
+
+.character-name {
+    font: bold;
+    font-size: 18px;
+    text-align: center;
+    margin: auto;
+}
+
+.stat-col-group {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+}
+
+.left-col {
+    color: var(--object-fancy-text-color);
+    /* height: 54px; */
+}
+
+.character-id {
+    background-color: var(--accent-color); 
+    color: var(--secondary-color); 
+    height: 16px;
+    width: 18px;
+    padding: 2px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+
+.stat-col {
+    width: 20px;
+}
+
+.stat-name {
+
+}
+
+.stat-num {
+
+}
+
+.character-header-image {
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+    border-radius: 8px;
+    margin: 4px;
+    border-color: rgb(139, 137, 137);
+    /* border-width: 1px;
+    border-style: solid; */
+}
+
+.character-id-text {
+    margin: auto;
+
+}
+
+.sort-by-button {
+    background-color: var(--secondary-color);
+    box-shadow: var(--card-shadow);
+    margin-right: 15px;
+    margin: auto;
+}
+
+.sort-text {
+    margin-right: 15px;
+}
+
+.divider {
+}
+
+.divider-section {
+    height: 50px;
+}
+
+.unpicked-characters-font {
+    font-size: 26px;
+}
+
+table {
+    width: 100%;
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: #777;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+    padding: 16px;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+
+  .roster-table {
+      
+  }
+
+  .roster-col {
+      width: 300px;
+      margin: auto;
+      padding: 4px;
+  }
+
+  .rosters-section {
+      display: flex;
+      width: 100%;
+      margin: auto;
+      padding: 4px; 
+  }
+
+  .match-up-card {
+      margin: auto;
+  }
+/* 
+  .rosters-section {
+      display: flex;
+  } */
