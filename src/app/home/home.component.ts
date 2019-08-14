@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Tile } from '../tile';
-import { SortStat } from '../sort-stat/sort-stat';
+import { Character } from '../models/character';
+import { SortStat } from '../models/sort-stat';
 import { isPrimitive } from 'util';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TILES } from '../mock-tiles';
+import { CHARACTERS } from '../mock-data/mock-characters';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +12,7 @@ import { TILES } from '../mock-tiles';
 })
 export class HomeComponent implements OnInit {
 
-
-  tiles: Tile[] = TILES;
+  characters: Character[] = CHARACTERS;
 
   sortedStat: string;
 
@@ -25,25 +24,32 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onTileClick(tile: Tile) {
+  onCharacterClick(character: Character) {
 
-    console.log('Clicked on tile: ' + tile.number + ' ' + tile.name);
-    this.router.navigateByUrl('specifics/' + tile.number);
+    console.log('Clicked on character: ' + character.id + ' ' + character.name);
+    this.router.navigateByUrl('characters/' + character.name);
   }
 
-  getNumber(tile: Tile) {
-    if (tile.number == null) {
+  getRatingTotal(character: Character) {
+    const ratingTotalStat: SortStat = {
+      value: String(character.bat + character.run + character.field + character.pitch),
+      isPrimary: this.sortedStat === "Total",
+      name: "Total"
+    };
+
+    return ratingTotalStat;
+  }
+
+  getNumber(character: Character) {
+    if (character.id == null) {
       return "  ";
     }
-    if (tile.number < 10) {
-      return " " + tile.number;
-    }
-    return tile.number;
+    return character.id;
   }
 
-  getBatStat(tile: Tile) {
+  getBatStat(character: Character) {
     const batStat: SortStat = {
-      value: String(tile.bat),
+      value: String(character.bat),
       isPrimary: this.sortedStat === "Batting",
       name: "Batting"
     };
@@ -51,9 +57,9 @@ export class HomeComponent implements OnInit {
     return batStat;
   }
 
-  getRunStat(tile: Tile) {
+  getRunStat(character: Character) {
     const batStat: SortStat = {
-      value: String(tile.run),
+      value: String(character.run),
       isPrimary: this.sortedStat === "Running",
       name: "Running"
     };
@@ -61,9 +67,9 @@ export class HomeComponent implements OnInit {
     return batStat;
   }
 
-  getFieldStat(tile: Tile) {
+  getFieldStat(character: Character) {
     const batStat: SortStat = {
-      value: String(tile.field),
+      value: String(character.field),
       isPrimary: this.sortedStat === "Fielding",
       name: "Fielding"
     };
@@ -71,9 +77,9 @@ export class HomeComponent implements OnInit {
     return batStat;
   }
 
-  getPitchStat(tile: Tile) {
+  getPitchStat(character: Character) {
     const batStat: SortStat = {
-      value: String(tile.pitch),
+      value: String(character.pitch),
       isPrimary: this.sortedStat === "Pitching",
       name: "Pitching"
     };
@@ -85,25 +91,41 @@ export class HomeComponent implements OnInit {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-  sortByRandom() {
-    let newTiles: Tile[] = [];
+  sortByRatingTotal() {
+    if (this.sortedStat === "Total") {
+      this.characters.reverse();
+      return;
+    }
 
-    this.tiles.forEach(tile => {
-      let newIndex = this.getRandomInt(newTiles.length);
-      newTiles.splice(newIndex, 0, tile);
+    this.characters.sort( (t1, t2) => {
+      const num1 = t1.bat + t1.run + t1.field + t1.pitch;
+      const num2 = t2.bat + t2.run + t2.field + t2.pitch;
+      this.sortedStat = "Total";
+      if (num1 < num2) { return 1; }
+      if (num1 > num2) { return -1; }
+      return 0;
+    });
+  }
+
+  sortByRandom() {
+    let newCharacters: Character[] = [];
+
+    this.characters.forEach(character => {
+      let newIndex = this.getRandomInt(newCharacters.length);
+      newCharacters.splice(newIndex, 0, character);
     });
     this.sortedStat = null;
-    this.tiles = newTiles;
+    this.characters = newCharacters;
   }
 
   sortByBatting() {
 
     if (this.sortedStat === "Batting") {
-      this.tiles.reverse();
+      this.characters.reverse();
       return;
     }
 
-    this.tiles.sort( (t1, t2) => {
+    this.characters.sort( (t1, t2) => {
       const num1 = t1.bat;
       const num2 = t2.bat;
       this.sortedStat = "Batting";
@@ -116,11 +138,11 @@ export class HomeComponent implements OnInit {
   sortByRunning() {
 
     if (this.sortedStat === "Running") {
-      this.tiles.reverse();
+      this.characters.reverse();
       return;
     }
 
-    this.tiles.sort( (t1, t2) => {
+    this.characters.sort( (t1, t2) => {
       const num1 = t1.run;
       const num2 = t2.run;
       this.sortedStat = "Running";
@@ -133,11 +155,11 @@ export class HomeComponent implements OnInit {
   sortByFielding() {
 
     if (this.sortedStat === "Fielding") {
-      this.tiles.reverse();
+      this.characters.reverse();
       return;
     }
 
-    this.tiles.sort( (t1, t2) => {
+    this.characters.sort( (t1, t2) => {
       const num1 = t1.field;
       const num2 = t2.field;
       this.sortedStat = "Fielding";
@@ -150,11 +172,11 @@ export class HomeComponent implements OnInit {
   sortByPitching() {
 
     if (this.sortedStat === "Pitching") {
-      this.tiles.reverse();
+      this.characters.reverse();
       return;
     }
 
-    this.tiles.sort( (t1, t2) => {
+    this.characters.sort( (t1, t2) => {
       const num1 = t1.pitch;
       const num2 = t2.pitch;
       this.sortedStat = "Pitching";
@@ -167,13 +189,13 @@ export class HomeComponent implements OnInit {
   sortByNumber() {
 
     if (this.sortedStat === "Number") {
-      this.tiles.reverse();
+      this.characters.reverse();
       return;
     }
 
-    this.tiles.sort( (t1, t2) => {
-      const num1 = t1.number;
-      const num2 = t2.number;
+    this.characters.sort( (t1, t2) => {
+      const num1 = t1.id;
+      const num2 = t2.id;
       this.sortedStat = "Number";
       if (num1 > num2) { return 1; }
       if (num1 < num2) { return -1; }
@@ -184,11 +206,11 @@ export class HomeComponent implements OnInit {
   sortByName() {
 
     if (this.sortedStat === "Name") {
-      this.tiles.reverse();
+      this.characters.reverse();
       return;
     }
 
-    this.tiles.sort( (t1, t2) => {
+    this.characters.sort( (t1, t2) => {
       const name1 = t1.name.toLowerCase();
       const name2 = t2.name.toLowerCase();
       this.sortedStat = "Name";

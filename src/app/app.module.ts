@@ -61,6 +61,8 @@ import { SortStatComponent } from './sort-stat/sort-stat.component';
 import { DetailsComponent } from './details/details.component';
 import { AnalyticBlockComponent } from './analytic-block/analytic-block.component';
 import { CollectionsComponent } from './collections/collections.component';
+import { CharacterComponent } from './+character/character/character.component';
+import { RandomTeamsComponent } from './random-teams/random-teams.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { CollectionsComponent } from './collections/collections.component';
     DetailsComponent,
     AnalyticBlockComponent,
     CollectionsComponent,
+    CharacterComponent,
+    RandomTeamsComponent,
   ],
   imports: [
     BrowserModule,

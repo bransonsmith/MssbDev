@@ -9,8 +9,8 @@
 
                     <!-- 'name', 'number', 'info', 'bat', 'run' -->
                     <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="hdName(event)"> name </th>
-                        <td mat-cell *matCellDef="let tile"> {{tile.name}} </td>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> name </th>
+                        <td mat-cell *matCellDef="let tile" (click)="onNameClick(tile)" class="clickable-cell"> {{tile.name}} </td>
                     </ng-container>
                     
                     <ng-container matColumnDef="number">

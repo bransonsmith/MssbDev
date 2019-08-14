@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AnalyticBlock } from './analytic-block';
+import { AnalyticBlock } from '../models/analytic-block';
 
 @Component({
   selector: 'app-analytic-block',

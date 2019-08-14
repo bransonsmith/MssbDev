@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { Tile } from '../tile';
-import { TILES } from '../mock-tiles';
+import { Tile } from '../models/tile';
+import { TILES } from '../mock-data/mock-tiles';
 import { TileService } from '../services/tile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-collections',
@@ -23,7 +24,8 @@ export class CollectionsComponent implements OnInit {
 
 
   constructor(
-    private tileService: TileService
+    private tileService: TileService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,10 @@ export class CollectionsComponent implements OnInit {
 
   hdName() {
 
+  }
+
+  onNameClick(tile: Tile) {
+    this.router.navigateByUrl('specifics/' + tile.number);
   }
 
 }

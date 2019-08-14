@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SortStat } from './sort-stat';
+import { SortStat } from '../models/sort-stat';
 
 @Component({
   selector: 'app-sort-stat',

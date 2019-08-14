@@ -31,3 +31,14 @@ th.mat-sort-header-sorted {
     margin: 10px;
     padding: 8px;
 }
+
+.clickable-cell {
+    font: bold;
+    cursor: pointer;
+    color: rgb(69, 42, 165);
+}
+
+.clickable-cell:hover {
+    font: bold;
+    cursor: pointer;
+}

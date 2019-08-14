@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { TILES } from '../mock-tiles';
-import { Tile } from '../tile';
+import { TILES } from '../mock-data/mock-tiles';
+import { Tile } from '../models/tile';
 
 @Injectable({
   providedIn: 'root'

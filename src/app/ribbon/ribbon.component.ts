@@ -25,6 +25,10 @@ export class RibbonComponent implements OnInit {
     this.router.navigateByUrl('collections');
   }
 
+  handleRandomMatchUpClick(event: Event) {
+    this.router.navigateByUrl('randomTeams');
+  }
+
   homeButtonClick(event: Event) {
     this.router.navigateByUrl('home');
   }
