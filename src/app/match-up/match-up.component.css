@@ -28,6 +28,25 @@
     border-style: solid;
 }
 
+.character-rect-selected {
+    display: flex;
+    color: var(--object-text-color);
+    width: 220px;
+    height: 70px;
+    align-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    margin: 12px;
+
+    background-color: var(--object-color-brighter);
+    box-shadow: var(--card-shadow);
+    border-color: var(--primary-color);
+    border-width: 3px;
+    border-style: solid;
+}
+
 .right-col {
     width: 100%;
 }

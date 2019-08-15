@@ -63,6 +63,7 @@ import { AnalyticBlockComponent } from './analytic-block/analytic-block.componen
 import { CollectionsComponent } from './collections/collections.component';
 import { CharacterComponent } from './+character/character/character.component';
 import { MatchUpComponent } from './match-up/match-up.component';
+import { RosterListItemComponent } from './roster-list-item/roster-list-item.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { MatchUpComponent } from './match-up/match-up.component';
     CollectionsComponent,
     CharacterComponent,
     MatchUpComponent,
+    RosterListItemComponent,
   ],
   imports: [
     BrowserModule,
