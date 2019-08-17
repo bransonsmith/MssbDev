@@ -64,6 +64,7 @@ import { CollectionsComponent } from './collections/collections.component';
 import { CharacterComponent } from './+character/character/character.component';
 import { MatchUpComponent } from './match-up/match-up.component';
 import { RosterListItemComponent } from './roster-list-item/roster-list-item.component';
+import { CharacterRectComponent } from './+character/character-rect/character-rect.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { RosterListItemComponent } from './roster-list-item/roster-list-item.com
     CharacterComponent,
     MatchUpComponent,
     RosterListItemComponent,
+    CharacterRectComponent,
   ],
   imports: [
     BrowserModule,

@@ -32,8 +32,8 @@ export class MatchUpComponent implements OnInit {
   selectedIndex: number;
   selectedSection: string;
 
-  const defaultSelecedIndex = -1;
-  const defaultSelecedSection = '';
+  defaultSelecedIndex = -1;
+  defaultSelecedSection = '';
 
   dataSource = this.unpickedCharacters;
   columnsToDisplay = ['name'];
@@ -46,6 +46,134 @@ export class MatchUpComponent implements OnInit {
     this.selectedSection = this.defaultSelecedSection;
   }
 
+  isFirstSlotCaptain(section: string): boolean {
+    let charToCheck: Character = null;
+    if (section === 'left') {
+      charToCheck = this.leftRoster[0];
+    }
+    if (section === 'right') {
+      charToCheck = this.rightRoster[0];
+    }
+
+    if (charToCheck === null) return false;
+    if (charToCheck.name === 'Empty') return false;
+    if (charToCheck.isCaptain) return true;
+    return false;
+  }
+
+  clearRoster(section: string) {
+    if (section === 'left') {
+      while (this.leftRoster.length > 0) {
+
+        const charFromRoster = this.cloneCharacter(this.leftRoster.pop());
+        if (charFromRoster.name !== 'Empty') {
+          this.unpickedCharacters.push(charFromRoster);
+        }
+      }
+      this.leftRoster = this.getEmptyRoster();
+    }
+    if (section === 'right') {
+      while (this.rightRoster.length > 0) {
+        this.unpickedCharacters.push(this.rightRoster.pop());
+      }
+      this.rightRoster = this.getEmptyRoster();
+    }
+  }
+
+  cloneCharacter(character: Character): Character {
+
+    const clone = {
+      id: character.id,
+      name: character.name,
+      bat: character.bat,
+      field: character.field,
+      run: character.run,
+      pitch: character.pitch,
+      lean: character.lean,
+      zone: character.zone,
+      agility: character.agility,
+      coverage: character.coverage,
+      reachOut: character.reachOut,
+      reachIn: character.reachIn,
+      dive: character.dive,
+      size: character.size,
+      arm: character.arm,
+      jump: character.jump,
+      chemistry: character.chemistry,
+      stamina: character.stamina,
+      curve: character.curve,
+      velocity: character.velocity,
+      chargeVelocity: character.chargeVelocity,
+      changeUp: character.changeUp,
+      isCaptain: character.isCaptain,
+      captainAbilityOffense: character.captainAbilityOffense,
+      captainAbilityDefense: character.captainAbilityDefense,
+      description: character.description,
+      notes: character.notes,
+      ability: character.ability,
+      originGroup: character.originGroup,
+      tags: character.tags
+    };
+
+    return clone;
+  }
+
+  fillRandom(section: string) {
+
+    let i = 0;
+    if (section === 'left') {
+      this.leftRoster.forEach(character => {
+        if (character.name === 'Empty') {
+          let charFromUnpicked: Character = null;
+          let randomUnpickedIndex = 0;
+          while (charFromUnpicked === null || charFromUnpicked.name === 'Empty') {
+            randomUnpickedIndex = Math.floor(Math.random() * Math.floor(this.unpickedCharacters.length));
+            charFromUnpicked = this.cloneCharacter(this.unpickedCharacters[randomUnpickedIndex]);
+            if (i === 0 && !charFromUnpicked.isCaptain) {
+              charFromUnpicked = null;
+            }
+          }
+
+          const charFromRoster = this.cloneCharacter(character);
+          if (charFromRoster.name !== 'Empty') {
+            this.unpickedCharacters.push(charFromRoster);
+          }
+          this.leftRoster[i] = this.cloneCharacter(charFromUnpicked);
+          this.unpickedCharacters.splice(randomUnpickedIndex, 1);
+        }
+        i += 1;
+      });
+    } else {
+      return;
+    }
+
+  }
+
+  rosterContains(char: Character, listName: string): boolean {
+    console.log('Does ' + listName + ' roster contain ' + char.name);
+    if (char.name === 'Empty') return true;
+
+    let contains = false;
+    if (listName === 'left') {
+      this.leftRoster.forEach(c => {
+        console.log('---' + c.name + ' == ' + char.name + '?');
+        if (c.name === char.name) {
+          contains = true;
+          return true;
+        }
+      });
+    }
+    if (listName === 'right') {
+      this.rightRoster.forEach(c => {
+        if (c.name === char.name) {
+          contains = true;
+          return true;
+        }
+      });
+    }
+    return contains;
+  }
+
   selected(index: number, section: string) {
     return (this.selectedIndex === index && this.selectedSection === section);
   }
@@ -56,8 +184,8 @@ export class MatchUpComponent implements OnInit {
       this.selectedIndex = index;
       this.selectedSection = section;
     } else {
-      const selected1: Character = this.getSelectedCharacter1();
-      const selected2: Character = this.getSelectedCharacter2(index, section);
+      const selected1: Character = this.cloneCharacter(this.getSelectedCharacter1());
+      const selected2: Character = this.cloneCharacter(this.getSelectedCharacter2(index, section));
 
       if (section === 'right') {
 
@@ -69,7 +197,11 @@ export class MatchUpComponent implements OnInit {
 
       } else if (section === 'unpicked') {
 
-        this.unpickedCharacters[index] = selected1;
+        if (selected1.name !== 'Empty') {
+          this.unpickedCharacters[index] = selected1;
+        } else {
+          this.unpickedCharacters.splice(index, 1);
+        }
 
       }
 
@@ -83,8 +215,11 @@ export class MatchUpComponent implements OnInit {
 
       } else if (this.selectedSection === 'unpicked') {
 
-        this.unpickedCharacters[this.selectedIndex] = selected2;
-
+        if (selected2.name !== 'Empty') {
+          this.unpickedCharacters[this.selectedIndex] = selected2;
+        } else {
+            this.unpickedCharacters.splice(this.selectedIndex, 1);
+        }
       }
 
       this.selectedIndex = this.defaultSelecedIndex;

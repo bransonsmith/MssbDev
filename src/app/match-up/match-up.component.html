@@ -3,11 +3,15 @@
     <div class="rosters-section">
             
         <mat-card class="roster-col">
-            <div class="roster-col-options">
 
+            <div class="roster-col-options">
+                <button mat-button class="random-buttom" (click)="fillRandom('left')">Fill Random</button>
+                <button mat-button class="random-buttom" (click)="clearRoster('left')">Clear</button>
             </div>
+
             <div class="roster">
-                <mat-grid-list cols="1" rowHeight="85px">
+                <div class="roster-header" *ngIf="!isFirstSlotCaptain('left')" >The first roster slot must be a captain!</div>
+                <mat-grid-list cols="1" rowHeight="53px">
                     
                     <mat-grid-tile
                         *ngFor="let character of leftRoster; let i = index"
@@ -15,89 +19,8 @@
                         [rowspan]=1
                         [style.background]="character.color">
         
-                        <div matRipple [matRippleCentered]="true" (click)="onRosterListItemClick(i, 'left')">
-                            <ng-content></ng-content>
-                            
-                            <div *ngIf="selected(i, 'left'); else notSelected">
-                        
-                                <mat-card class="character-rect-selected">
-                                    <div class="left-col">
-                                        <!-- <div class="character-id"><div class="character-id-text">{{getNumber(character)}}</div></div> -->
-                                        
-                                        <img class="character-header-image" src="../../assets/images/character/mugshot/{{character.name}}.png" alt="Picture of {{character.name}}">
-                                    </div>   
-                    
-                                    <div class="right-col">
-            
-                                        <div class="character-name">{{character.name}}</div>
-            
-                                        <div class="right-col-bot">
-                                            <div class="stat-col-group">
-                                                <div class="stat-col">
-                                                    <div class="stat-name">B</div>
-                                                    <div class="stat-num">{{character.bat}}</div>
-                                                </div>
-                                                <div class="stat-col">
-                                                    <div class="stat-name">R</div>
-                                                    <div class="stat-num">{{character.run}}</div>
-                                                </div>
-                                                <div class="stat-col">
-                                                    <div class="stat-name">F</div>
-                                                    <div class="stat-num">{{character.field}}</div>
-                                                </div>
-                                                <div class="stat-col">
-                                                    <div class="stat-name">P</div>
-                                                    <div class="stat-num">{{character.pitch}}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                                    
-                            </mat-card>
-                            </div>
-                                
-                            <ng-template #notSelected>
-                                <mat-card class="character-rect">     
-                                    <div class="left-col">
-                                        <!-- <div class="character-id"><div class="character-id-text">{{getNumber(character)}}</div></div> -->
-                                        
-                                        <img class="character-header-image" src="../../assets/images/character/mugshot/{{character.name}}.png" alt="Picture of {{character.name}}">
-                                    </div>   
-                    
-                                    <div class="right-col">
-            
-                                        <div class="character-name">{{character.name}}</div>
-            
-                                        <div class="right-col-bot">
-                                            <div class="stat-col-group">
-                                                <div class="stat-col">
-                                                    <div class="stat-name">B</div>
-                                                    <div class="stat-num">{{character.bat}}</div>
-                                                </div>
-                                                <div class="stat-col">
-                                                    <div class="stat-name">R</div>
-                                                    <div class="stat-num">{{character.run}}</div>
-                                                </div>
-                                                <div class="stat-col">
-                                                    <div class="stat-name">F</div>
-                                                    <div class="stat-num">{{character.field}}</div>
-                                                </div>
-                                                <div class="stat-col">
-                                                    <div class="stat-name">P</div>
-                                                    <div class="stat-num">{{character.pitch}}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                                        
-                                </mat-card>
-                            </ng-template>
+                        <app-character-rect [character]=character (click)="onRosterListItemClick(i, 'left')"></app-character-rect>
 
-                        </div>
-        
-                        
                     </mat-grid-tile>
                 </mat-grid-list>
 
@@ -110,7 +33,7 @@
 
             </div>
             <div class="roster">
-                <mat-grid-list cols="1" rowHeight="85px">
+                <mat-grid-list cols="1" rowHeight="53px">
                     
                     <mat-grid-tile
                         *ngFor="let character of rightRoster; let i = index"
@@ -118,89 +41,8 @@
                         [rowspan]=1
                         [style.background]="character.color">
         
-                        <div matRipple [matRippleCentered]="true" (click)="onRosterListItemClick(i, 'right')">
-                            <ng-content></ng-content>
-                            
-                            <div *ngIf="selected(i, 'right'); else notSelected">
-                        
-                                <mat-card class="character-rect-selected">
-                                        <div class="left-col">
-                                            <!-- <div class="character-id"><div class="character-id-text">{{getNumber(character)}}</div></div> -->
-                                            
-                                            <img class="character-header-image" src="../../assets/images/character/mugshot/{{character.name}}.png" alt="Picture of {{character.name}}">
-                                        </div>   
-                        
-                                        <div class="right-col">
-                
-                                            <div class="character-name">{{character.name}}</div>
-                
-                                            <div class="right-col-bot">
-                                                <div class="stat-col-group">
-                                                    <div class="stat-col">
-                                                        <div class="stat-name">B</div>
-                                                        <div class="stat-num">{{character.bat}}</div>
-                                                    </div>
-                                                    <div class="stat-col">
-                                                        <div class="stat-name">R</div>
-                                                        <div class="stat-num">{{character.run}}</div>
-                                                    </div>
-                                                    <div class="stat-col">
-                                                        <div class="stat-name">F</div>
-                                                        <div class="stat-num">{{character.field}}</div>
-                                                    </div>
-                                                    <div class="stat-col">
-                                                        <div class="stat-name">P</div>
-                                                        <div class="stat-num">{{character.pitch}}</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                    
-                                        </div>
-                                        
-                                </mat-card>
-                            </div>
-                                    
-                            <ng-template #notSelected>
-                                <mat-card class="character-rect">     
-                                    <div class="left-col">
-                                        <!-- <div class="character-id"><div class="character-id-text">{{getNumber(character)}}</div></div> -->
-                                        
-                                        <img class="character-header-image" src="../../assets/images/character/mugshot/{{character.name}}.png" alt="Picture of {{character.name}}">
-                                    </div>   
-                    
-                                    <div class="right-col">
-            
-                                        <div class="character-name">{{character.name}}</div>
-            
-                                        <div class="right-col-bot">
-                                            <div class="stat-col-group">
-                                                <div class="stat-col">
-                                                    <div class="stat-name">B</div>
-                                                    <div class="stat-num">{{character.bat}}</div>
-                                                </div>
-                                                <div class="stat-col">
-                                                    <div class="stat-name">R</div>
-                                                    <div class="stat-num">{{character.run}}</div>
-                                                </div>
-                                                <div class="stat-col">
-                                                    <div class="stat-name">F</div>
-                                                    <div class="stat-num">{{character.field}}</div>
-                                                </div>
-                                                <div class="stat-col">
-                                                    <div class="stat-name">P</div>
-                                                    <div class="stat-num">{{character.pitch}}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                                        
-                                </mat-card>
-                            </ng-template>
-
-                        </div>
-        
-                        
+                        <app-character-rect [character]=character (click)="onRosterListItemClick(i, 'right')"></app-character-rect>
+ 
                     </mat-grid-tile>
                 </mat-grid-list>
 
@@ -215,96 +57,15 @@
     </div>
 
     <div class="unpicked-section">
-        <mat-grid-list cols="3" rowHeight="90px">
+        <mat-grid-list cols="4" rowHeight="53px">
             <mat-grid-tile
                 *ngFor="let character of unpickedCharacters; let i = index"
                 [colspan]=1
                 [rowspan]=1
                 [style.background]="character.color">
 
-                <div matRipple [matRippleCentered]="true" (click)="onRosterListItemClick(i, 'unpicked')">
-                    <ng-content></ng-content>
+                <app-character-rect [character]=character (click)="onRosterListItemClick(i, 'unpicked')"></app-character-rect>
 
-
-                    <div *ngIf="selected(i, 'unpicked'); else notSelected">
-                        
-                        <mat-card class="character-rect-selected">
-                                <div class="left-col">
-                                    <!-- <div class="character-id"><div class="character-id-text">{{getNumber(character)}}</div></div> -->
-                                    
-                                    <img class="character-header-image" src="../../assets/images/character/mugshot/{{character.name}}.png" alt="Picture of {{character.name}}">
-                                </div>   
-                
-                                <div class="right-col">
-        
-                                    <div class="character-name">{{character.name}}</div>
-        
-                                    <div class="right-col-bot">
-                                        <div class="stat-col-group">
-                                            <div class="stat-col">
-                                                <div class="stat-name">B</div>
-                                                <div class="stat-num">{{character.bat}}</div>
-                                            </div>
-                                            <div class="stat-col">
-                                                <div class="stat-name">R</div>
-                                                <div class="stat-num">{{character.run}}</div>
-                                            </div>
-                                            <div class="stat-col">
-                                                <div class="stat-name">F</div>
-                                                <div class="stat-num">{{character.field}}</div>
-                                            </div>
-                                            <div class="stat-col">
-                                                <div class="stat-name">P</div>
-                                                <div class="stat-num">{{character.pitch}}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-            
-                                </div>
-                                
-                        </mat-card>
-                    </div>
-                        
-                    <ng-template #notSelected>
-                        <mat-card class="character-rect">     
-                            <div class="left-col">
-                                <!-- <div class="character-id"><div class="character-id-text">{{getNumber(character)}}</div></div> -->
-                                
-                                <img class="character-header-image" src="../../assets/images/character/mugshot/{{character.name}}.png" alt="Picture of {{character.name}}">
-                            </div>   
-            
-                            <div class="right-col">
-    
-                                <div class="character-name">{{character.name}}</div>
-    
-                                <div class="right-col-bot">
-                                    <div class="stat-col-group">
-                                        <div class="stat-col">
-                                            <div class="stat-name">B</div>
-                                            <div class="stat-num">{{character.bat}}</div>
-                                        </div>
-                                        <div class="stat-col">
-                                            <div class="stat-name">R</div>
-                                            <div class="stat-num">{{character.run}}</div>
-                                        </div>
-                                        <div class="stat-col">
-                                            <div class="stat-name">F</div>
-                                            <div class="stat-num">{{character.field}}</div>
-                                        </div>
-                                        <div class="stat-col">
-                                            <div class="stat-name">P</div>
-                                            <div class="stat-num">{{character.pitch}}</div>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                            </div>
-                                
-                        </mat-card>
-                    </ng-template>
-
-       
-                </div>   
             </mat-grid-tile>
         </mat-grid-list>
     </div>
