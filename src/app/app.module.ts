@@ -63,7 +63,6 @@ import { AnalyticBlockComponent } from './general-compnents/analytic-block/analy
 import { CollectionsComponent } from './general-compnents/collections/collections.component';
 import { CharacterComponent } from './+character/character/character.component';
 import { MatchUpComponent } from './match-up/match-up.component';
-import { RosterListItemComponent } from './roster-list-item/roster-list-item.component';
 import { CharacterRectComponent } from './+character/character-rect/character-rect.component';
 
 @NgModule({
@@ -82,7 +81,6 @@ import { CharacterRectComponent } from './+character/character-rect/character-re
     CollectionsComponent,
     CharacterComponent,
     MatchUpComponent,
-    RosterListItemComponent,
     CharacterRectComponent,
   ],
   imports: [
