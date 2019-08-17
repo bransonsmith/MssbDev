@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../models/character';
-import { SortStat } from '../models/sort-stat';
+import { Character } from '../../models/character';
+import { SortStat } from '../../models/sort-stat';
 import { isPrimitive } from 'util';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CHARACTERS } from '../mock-data/mock-characters';
+import { CHARACTERS } from '../../mock-data/mock-characters';
 
 @Component({
   selector: 'app-home',

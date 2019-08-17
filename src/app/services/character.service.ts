@@ -37,10 +37,6 @@ export class CharacterService {
   //   );
   // }
 
-  getSimpleChar(): Character {
-    return {  id: '5c8805550e68bd2378a08fc7', name: 'Mario',   bat: 7,   lean: 0.0,   zone: 3,   agility: 2,   coverage: 6.75,   reachOut: 0.0,   reachIn: 0.75,   run: 7,   field: 6,   dive: 2,   size: 2,   arm: 3,   jump: 2,   chemistry: 9,   pitch: 6,   stamina: 8,   curve: 6.0,   velocity: 33,   chargeVelocity: 24,   changeUp: 2.0,   description: '',   notes: '',   ability: '',   isCaptain: true,   captainAbilityOffense: '',   captainAbilityDefense: '',   originGroup: '',   tags: ''};
-  }
-
   getCharacter(id: string): Character {
     return CHARACTERS.find(character => character.id === id);
   }

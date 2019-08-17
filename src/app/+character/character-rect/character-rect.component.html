@@ -14,7 +14,7 @@
                 
                 <div class="right-col-top">
                     <div *ngIf="showCaptainSymbol()" class="captain-symbol">C</div>
-                    <div class="character-name">{{character.name}}</div>
+                    <div class="character-name">{{getShortenedCharacterName()}}</div>
                 </div>
                 
 
@@ -56,7 +56,7 @@
 
                 <div class="right-col-top">
                     <div *ngIf="showCaptainSymbol()" class="captain-symbol">C</div>
-                    <div class="character-name">{{character.name}}</div>
+                    <div class="character-name">{{getShortenedCharacterName()}}</div>
                 </div>
 
                 <div class="right-col-bot">

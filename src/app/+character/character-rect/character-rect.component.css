@@ -1,13 +1,3 @@
-.match-up-card {
-    box-shadow: var(--card-shadow);
-    min-height: 1000px;
-}
-
-.rosters-section {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
 .character-rect {
     display: flex;
     background-color: var(--object-color);
@@ -15,7 +5,7 @@
     width: 160px;
     height: 40px;
     align-content: center;
-    font-size: 10px;
+    font-size: 12px;
     cursor: pointer;
     padding: 4px;
     border-radius: 8px;
@@ -35,7 +25,7 @@
     width: 160px;
     height: 40px;
     align-content: center;
-    font-size: 10px;
+    font-size: 12px;
     cursor: pointer;
     padding: 4px;
     border-radius: 8px;
@@ -46,17 +36,6 @@
     border-color: var(--primary-color);
     border-width: 3px;
     border-style: solid;
-}
-
-
-.character-id {
-    background-color: var(--accent-color); 
-    color: var(--secondary-color); 
-    height: 16px;
-    width: 18px;
-    padding: 2px;
-    border-radius: 4px;
-    text-align: center;
 }
 
 .character-header-image {
@@ -72,14 +51,11 @@
 
 .character-name {
     font: bold;
-    font-size: 12px;
+    font-size: 16px;
     text-align: center;
     margin: auto;
-}
-
-.character-id-text {
-    margin: auto;
-
+    margin-bottom: 1px;
+    color: var(--object-fancy-text-color);
 }
 
 .right-col {
@@ -115,125 +91,9 @@
 }
 
 .stat-name {
-
+    font-size: 10px;
 }
 
 .stat-num {
-
+    font-size: 12px;
 }
-
-.sort-by-button {
-    background-color: var(--secondary-color);
-    box-shadow: var(--card-shadow);
-    margin-right: 15px;
-    margin: auto;
-}
-
-.sort-text {
-    margin-right: 15px;
-}
-
-.divider {
-}
-
-.divider-section {
-    height: 50px;
-}
-
-.unpicked-characters-font {
-    font-size: 26px;
-}
-
-table {
-    width: 100%;
-  }
-  
-  tr.example-detail-row {
-    height: 0;
-  }
-  
-  tr.example-element-row:not(.example-expanded-row):hover {
-    background: #777;
-  }
-  
-  tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
-  }
-  
-  .example-element-row td {
-    border-bottom-width: 0;
-  }
-  
-  .example-element-detail {
-    overflow: hidden;
-    display: flex;
-  }
-  
-  .example-element-diagram {
-    min-width: 80px;
-    border: 2px solid black;
-    padding: 8px;
-    font-weight: lighter;
-    margin: 8px 0;
-    height: 104px;
-  }
-  
-  .example-element-symbol {
-    font-weight: bold;
-    font-size: 40px;
-    line-height: normal;
-  }
-  
-  .example-element-description {
-    padding: 16px;
-  }
-  
-  .example-element-description-attribution {
-    opacity: 0.5;
-  }
-
-  .roster-table {
-      
-  }
-
-  .roster-header {
-    margin: auto;
-    text-align: center;
-    font-size: 13px; 
-  }
-
-  .roster-col {
-      width: 300px;
-      margin: auto;
-      padding: 4px;
-  }
-
-  .rosters-section {
-      display: flex;
-      width: 100%;
-      margin: auto;
-      padding: 4px; 
-  }
-
-  .match-up-card {
-      margin: auto;
-  }
-/* 
-  .rosters-section {
-      display: flex;
-  } */
-  .random-buttom{
-        box-shadow: var(--card-shadow);    
-        background-color: var(--object-color-brighter);
-
-        margin: auto;        
-        margin-top: 15px;
-        margin-bottom: 10px;
-        width: 100px;
-  }
-
-  .roster-col-options {
-        display: flex;
-        margin-top: 10px;
-        margin-bottom: 10px;
-  }

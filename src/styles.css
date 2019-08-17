@@ -8,10 +8,10 @@
     --primary-color: rgb(102, 168, 255);
     --secondary-color: rgb(255, 255, 255);
     --accent-color: rgb(59, 143, 253);
-    --object-color: rgb(223, 223, 223);
-    --object-color-brighter: rgb(225, 235, 252);
+    --object-color: rgb(219, 220, 221);
+    --object-color-brighter: rgb(204, 220, 255);
     --object-fancy-text-color: rgb(59, 143, 253);
-    --object-text-color: rgb(0, 0, 0);
+    --object-text-color: rgb(46, 46, 46);
     --alt-background-color: rgb(83, 83, 83);
     --alt-contrast-primary-color: rgb(0, 255, 242);
     --alt-contrast-secondary-color: rgb(255, 0, 98);

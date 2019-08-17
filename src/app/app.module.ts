@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { FooterComponent } from './footer/footer.component';
-import { RibbonComponent } from './ribbon/ribbon.component';
+import { HeaderComponent } from './general-compnents/header/header.component';
+import { HomeComponent } from './general-compnents/home/home.component';
+import { PageNotFoundComponent } from './general-compnents/page-not-found/page-not-found.component';
+import { FooterComponent } from './general-compnents/footer/footer.component';
+import { RibbonComponent } from './general-compnents/ribbon/ribbon.component';
 
 
 import {A11yModule} from '@angular/cdk/a11y';
@@ -52,15 +52,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './general-compnents/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import 'hammerjs';
 import { RegisterComponent } from './register/register.component';
-import { SortStatComponent } from './sort-stat/sort-stat.component';
-import { DetailsComponent } from './details/details.component';
-import { AnalyticBlockComponent } from './analytic-block/analytic-block.component';
-import { CollectionsComponent } from './collections/collections.component';
+import { SortStatComponent } from './general-compnents/sort-stat/sort-stat.component';
+import { DetailsComponent } from './general-compnents/details/details.component';
+import { AnalyticBlockComponent } from './general-compnents/analytic-block/analytic-block.component';
+import { CollectionsComponent } from './general-compnents/collections/collections.component';
 import { CharacterComponent } from './+character/character/character.component';
 import { MatchUpComponent } from './match-up/match-up.component';
 import { RosterListItemComponent } from './roster-list-item/roster-list-item.component';

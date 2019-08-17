@@ -1,60 +1,76 @@
 <mat-card class="match-up-card">
 
     <div class="rosters-section">
-            
+
         <mat-card class="roster-col">
 
             <div class="roster-col-options">
-                <button mat-button class="random-buttom" (click)="fillRandom('left')">Fill Random</button>
-                <button mat-button class="random-buttom" (click)="clearRoster('left')">Clear</button>
+                <button mat-button class="random-buttom" (click)="fillRandom(this.leftRoster)">Fill Random</button>
+                <button mat-button class="random-buttom" (click)="clearRoster(this.leftRoster)">Clear</button>
             </div>
 
             <div class="roster">
-                <div class="roster-header" *ngIf="!isFirstSlotCaptain('left')" >The first roster slot must be a captain!</div>
+
+                <div class="roster-header" *ngIf="!isFirstSlotCaptain(this.leftRoster)" >The first roster slot must be a captain!</div>
+                <!-- <div class="roster-header" *ngIf="isFirstSlotCaptain(this.leftRoster)" ></div> -->
                 <mat-grid-list cols="1" rowHeight="53px">
-                    
+
                     <mat-grid-tile
                         *ngFor="let character of leftRoster; let i = index"
                         [colspan]=1
                         [rowspan]=1
                         [style.background]="character.color">
-        
+
                         <app-character-rect [character]=character (click)="onRosterListItemClick(i, 'left')"></app-character-rect>
+                        <div *ngIf="character.name !== 'Empty'">
+                            <button mat-button class="remove-character" (click)="moveCharacterToUnpicked(i, this.leftRoster)"><mat-icon class="clear-icon" aria-hidden="false" aria-label="clear icon">clear</mat-icon></button>
+                        </div>
 
                     </mat-grid-tile>
                 </mat-grid-list>
 
             </div>
-        </mat-card>     
-            
+        </mat-card>
 
         <mat-card class="roster-col">
-            <div class="roster-col-options">
 
+            <div class="roster-col-options">
+                <button mat-button class="random-buttom" (click)="fillRandom(this.rightRoster)">Fill Random</button>
+                <button mat-button class="random-buttom" (click)="clearRoster(this.rightRoster)">Clear</button>
             </div>
+
             <div class="roster">
+
+                <div class="roster-header" *ngIf="!isFirstSlotCaptain(this.rightRoster)" >The first roster slot must be a captain!</div>
+                <!-- <div class="roster-header" *ngIf="isFirstSlotCaptain(this.leftRoster)" ></div> -->
                 <mat-grid-list cols="1" rowHeight="53px">
-                    
+
                     <mat-grid-tile
                         *ngFor="let character of rightRoster; let i = index"
                         [colspan]=1
                         [rowspan]=1
                         [style.background]="character.color">
-        
+
                         <app-character-rect [character]=character (click)="onRosterListItemClick(i, 'right')"></app-character-rect>
- 
+                        <div *ngIf="character.name !== 'Empty'">
+                            <button mat-button class="remove-character" (click)="moveCharacterToUnpicked(i, this.rightRoster)"><mat-icon class="clear-icon" aria-hidden="false" aria-label="clear icon">clear</mat-icon></button>
+                        </div>
                     </mat-grid-tile>
                 </mat-grid-list>
 
             </div>
-        </mat-card>   
+        </mat-card>
 
     </div>
+
+
 
     <div class="divider-section">
         <mat-list-item class="unpicked-characters-font">Unpicked Characters</mat-list-item>
         <mat-divider class="divider"></mat-divider>
     </div>
+
+
 
     <div class="unpicked-section">
         <mat-grid-list cols="4" rowHeight="53px">
@@ -69,4 +85,5 @@
             </mat-grid-tile>
         </mat-grid-list>
     </div>
+
 </mat-card>

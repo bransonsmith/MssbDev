@@ -46,37 +46,49 @@ export class MatchUpComponent implements OnInit {
     this.selectedSection = this.defaultSelecedSection;
   }
 
-  isFirstSlotCaptain(section: string): boolean {
-    let charToCheck: Character = null;
-    if (section === 'left') {
-      charToCheck = this.leftRoster[0];
-    }
-    if (section === 'right') {
-      charToCheck = this.rightRoster[0];
-    }
+  isFirstSlotCaptain(roster: Character[]): boolean {
+    if (roster === null || roster.length < 1) { return false; }
+    const charToCheck: Character = roster[0];
 
-    if (charToCheck === null) return false;
-    if (charToCheck.name === 'Empty') return false;
-    if (charToCheck.isCaptain) return true;
+    if (charToCheck === null) { return false; }
+    if (charToCheck.name === 'Empty') { return false; }
+    if (charToCheck.isCaptain) { return true; }
     return false;
   }
 
-  clearRoster(section: string) {
-    if (section === 'left') {
-      while (this.leftRoster.length > 0) {
+  moveCharacterToUnpicked(index: number, roster: Character[]) {
+    const charToMove = this.cloneCharacter(roster[index]);
+    roster[index] = {
+      id: '', name: 'Empty', bat: 0,   lean: 0.0,   zone: 0,   agility: 0,   coverage: 0,
+      reachOut: 0.0,   reachIn: 0.0,   run: 0,   field: 0,   dive: 0,   size: 0,   arm: 0,   jump: 0,
+      chemistry: 0,   pitch: 0,   stamina: 0,   curve: 0.0,   velocity: 0,   chargeVelocity: 0,   changeUp: 0.0,
+      description: '',   notes: '',   ability: '',   isCaptain: true,   captainAbilityOffense: '',
+      captainAbilityDefense: '',   originGroup: '',   tags: ''
+    };
 
-        const charFromRoster = this.cloneCharacter(this.leftRoster.pop());
-        if (charFromRoster.name !== 'Empty') {
-          this.unpickedCharacters.push(charFromRoster);
-        }
-      }
-      this.leftRoster = this.getEmptyRoster();
+    if (charToMove.name !== 'Empty') {
+      this.unpickedCharacters.push(charToMove);
     }
-    if (section === 'right') {
-      while (this.rightRoster.length > 0) {
-        this.unpickedCharacters.push(this.rightRoster.pop());
+
+  }
+
+  clearRoster(roster: Character[]) {
+    while (roster.length > 0) {
+      const charFromRoster = this.cloneCharacter(roster.pop());
+      if (charFromRoster.name !== 'Empty') {
+        this.unpickedCharacters.push(charFromRoster);
       }
-      this.rightRoster = this.getEmptyRoster();
+    }
+    for (let i = 0; i < 9; i++) {
+      roster.push(
+        {
+          id: '', name: 'Empty', bat: 0,   lean: 0.0,   zone: 0,   agility: 0,   coverage: 0,
+          reachOut: 0.0,   reachIn: 0.0,   run: 0,   field: 0,   dive: 0,   size: 0,   arm: 0,   jump: 0,
+          chemistry: 0,   pitch: 0,   stamina: 0,   curve: 0.0,   velocity: 0,   chargeVelocity: 0,   changeUp: 0.0,
+          description: '',   notes: '',   ability: '',   isCaptain: true,   captainAbilityOffense: '',
+          captainAbilityDefense: '',   originGroup: '',   tags: ''
+        }
+      );
     }
   }
 
@@ -118,59 +130,44 @@ export class MatchUpComponent implements OnInit {
     return clone;
   }
 
-  fillRandom(section: string) {
+  fillRandom(roster: Character[]) {
 
     let i = 0;
-    if (section === 'left') {
-      this.leftRoster.forEach(character => {
-        if (character.name === 'Empty') {
-          let charFromUnpicked: Character = null;
-          let randomUnpickedIndex = 0;
-          while (charFromUnpicked === null || charFromUnpicked.name === 'Empty') {
-            randomUnpickedIndex = Math.floor(Math.random() * Math.floor(this.unpickedCharacters.length));
-            charFromUnpicked = this.cloneCharacter(this.unpickedCharacters[randomUnpickedIndex]);
-            if (i === 0 && !charFromUnpicked.isCaptain) {
-              charFromUnpicked = null;
-            }
+    roster.forEach(character => {
+      if (character.name === 'Empty') {
+        let charFromUnpicked: Character = null;
+        let randomUnpickedIndex = 0;
+        while (charFromUnpicked === null || charFromUnpicked.name === 'Empty') {
+          randomUnpickedIndex = Math.floor(Math.random() * Math.floor(this.unpickedCharacters.length));
+          charFromUnpicked = this.cloneCharacter(this.unpickedCharacters[randomUnpickedIndex]);
+          if (i === 0 && !charFromUnpicked.isCaptain) {
+            charFromUnpicked = null;
           }
-
-          const charFromRoster = this.cloneCharacter(character);
-          if (charFromRoster.name !== 'Empty') {
-            this.unpickedCharacters.push(charFromRoster);
-          }
-          this.leftRoster[i] = this.cloneCharacter(charFromUnpicked);
-          this.unpickedCharacters.splice(randomUnpickedIndex, 1);
         }
-        i += 1;
-      });
-    } else {
-      return;
-    }
 
+        const charFromRoster = this.cloneCharacter(character);
+        if (charFromRoster.name !== 'Empty') {
+          this.unpickedCharacters.push(charFromRoster);
+        }
+        roster[i] = this.cloneCharacter(charFromUnpicked);
+        this.unpickedCharacters.splice(randomUnpickedIndex, 1);
+      }
+
+      i++;
+    });
   }
 
-  rosterContains(char: Character, listName: string): boolean {
-    console.log('Does ' + listName + ' roster contain ' + char.name);
-    if (char.name === 'Empty') return true;
+  rosterContains(char: Character, roster: Character[]): boolean {
+    if (char.name === 'Empty') { return true; }
 
     let contains = false;
-    if (listName === 'left') {
-      this.leftRoster.forEach(c => {
-        console.log('---' + c.name + ' == ' + char.name + '?');
-        if (c.name === char.name) {
-          contains = true;
-          return true;
-        }
-      });
-    }
-    if (listName === 'right') {
-      this.rightRoster.forEach(c => {
-        if (c.name === char.name) {
-          contains = true;
-          return true;
-        }
-      });
-    }
+    roster.forEach(c => {
+      if (c.name === char.name) {
+        contains = true;
+        return true;
+      }
+    });
+
     return contains;
   }
 

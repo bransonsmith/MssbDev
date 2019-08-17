@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { DetailsComponent } from './details/details.component';
-import { CollectionsComponent } from './collections/collections.component';
+import { PageNotFoundComponent } from './general-compnents/page-not-found/page-not-found.component';
+import { HomeComponent } from './general-compnents/home/home.component';
+import { LoginComponent } from './general-compnents/login/login.component';
+import { DetailsComponent } from './general-compnents/details/details.component';
+import { CollectionsComponent } from './general-compnents/collections/collections.component';
 import { CharacterComponent } from './+character/character/character.component';
 import { MatchUpComponent } from './match-up/match-up.component';
 

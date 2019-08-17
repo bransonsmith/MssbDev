@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KeyValue } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Login } from '../models/login';
+import { Login } from '../../models/login';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Tile } from '../models/tile';
-import { TileService } from '../services/tile.service';
+import { Tile } from '../../models/tile';
+import { TileService } from '../../services/tile.service';
 import { Observable } from 'rxjs';
-import { AnalyticBlock } from '../models/analytic-block';
+import { AnalyticBlock } from '../../models/analytic-block';
 
 @Component({
   selector: 'app-details',

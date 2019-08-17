@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { Tile } from '../models/tile';
-import { TILES } from '../mock-data/mock-tiles';
-import { TileService } from '../services/tile.service';
+import { Tile } from '../../models/tile';
+import { TILES } from '../../mock-data/mock-tiles';
+import { TileService } from '../../services/tile.service';
 import { Router } from '@angular/router';
 
 @Component({
