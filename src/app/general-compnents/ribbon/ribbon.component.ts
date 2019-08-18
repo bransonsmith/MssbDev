@@ -25,6 +25,10 @@ export class RibbonComponent implements OnInit {
     this.router.navigateByUrl('teams');
   }
 
+  handleCharactersClick(event: Event) {
+    this.router.navigateByUrl('characters');
+  }
+
   handleMatchUpClick(event: Event) {
     this.router.navigateByUrl('matchUp');
   }

@@ -66,6 +66,7 @@ import { MatchUpComponent } from './match-up/match-up.component';
 import { CharacterRectComponent } from './+character/character-rect/character-rect.component';
 import { TeamsHomeComponent } from './+team/teams-home/teams-home.component';
 import { TriValComponent } from './general-compnents/tri-val/tri-val.component';
+import { CharactersHomeComponent } from './+character/characters-home/characters-home.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { TriValComponent } from './general-compnents/tri-val/tri-val.component';
     CharacterRectComponent,
     TeamsHomeComponent,
     TriValComponent,
+    CharactersHomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -48,15 +48,12 @@ export class CharacterService {
   getCharacterByName(name: string): Character {
     let charToReturn = null;
     CHARACTERS.forEach(c => {
-      console.log('Checking character: ' + c.name + ' matches ' + name);
       if (c.name === name) {
-        console.log('MATCHED! ' + c.name + ' matches ' + name);
         charToReturn = c;
         return charToReturn;
       }
     });
 
-    console.log('Service found character: ' + charToReturn.name);
     return charToReturn;
   }
 
