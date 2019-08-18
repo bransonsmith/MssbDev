@@ -1,0 +1,10 @@
+.tri-val {
+    display: flex;
+}
+
+.filled-star {
+    color: var(--accent-color);
+    border-color: black;
+    border: 5px;
+    
+}

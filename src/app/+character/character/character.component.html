@@ -3,7 +3,7 @@
 
         <div class="basic-detail-section section-card-">
             
-            <mat-card class="image-card section-card">
+            <mat-card class="section-card image-card">
                 <mat-card-title>
                     {{character.name}}
                 </mat-card-title>
@@ -14,75 +14,83 @@
             <mat-card class="detail-card section-card">
                 
                 <div class="statRow">
-                    <div class="statName">Number</div>
-                    <div class="statValue">{{character.id}}</div>
+                    <div class="statName">Batting</div>
+                    <div class="statValue">{{character.bat}}</div>
 
-                    <div class="statName">Info</div>
-                    <div class="statValue">{{character.description}}</div>
+                    <div class="statName">Running</div>
+                    <div class="statValue">{{character.run}}</div>
                 </div>
                 
                 <div class="statRow">
-                    <div class="statName">Batting</div>
-                    <div class="statValue">{{character.bat}}</div>
+                    <div class="statName">Fielding</div>
+                    <div class="statValue">{{character.field}}</div>
                     
                     <div class="statName">Pitching</div>
                     <div class="statValue">{{character.pitch}}</div>
                 </div>
                                 
                 <div class="statRow">
-                    <div class="statName">Running</div>
-                    <div class="statValue">{{character.run}}</div>
+                    <div class="statName">Lean</div>
+                    <div class="statValue">{{character.lean}}</div>
 
-                    <div class="statName">Pitching</div>
-                    <div class="statValue">{{character.pitch}}</div>
+                    <div class="statName">Con Zone</div>
+                    <div class="statValue"><app-tri-val [value]=character.zone></app-tri-val></div>
                 </div>
                                 
                 <div class="statRow">
-                    <div class="statName">Fielding</div>
-                    <div class="statValue">{{character.field}}</div>
+                    <div class="statName">Reach Out</div>
+                    <div class="statValue">{{character.reachOut}}</div>
 
-                    <div class="statName">Number</div>
-                    <div class="statValue">{{character.id}}</div>
+                    <div class="statName">Reach In</div>
+                    <div class="statValue">{{character.reachIn}}</div>
                 </div>
                                 
                 <div class="statRow">
-                    <div class="statName">Pitching</div>
-                    <div class="statValue">{{character.pitch}}</div>
+                    <div class="statName">Diving</div>
+                    <div class="statValue"><app-tri-val [value]=character.dive></app-tri-val></div>
 
-                    <div class="statName">Fielding</div>
-                    <div class="statValue">{{character.field}}</div>
+                    <div class="statName">Jumping</div>
+                    <div class="statValue"><app-tri-val [value]=character.jump></app-tri-val></div>
                 </div>
         
                 <div class="statRow">
-                    <div class="statName">Info</div>
-                    <div class="statValue">{{character.description}}</div>
+                    <div class="statName">Arm</div>
+                    <div class="statValue"><app-tri-val [value]=character.arm></app-tri-val></div>
 
-                    <div class="statName">Number</div>
-                    <div class="statValue">{{character.id}}</div>
+                    <div class="statName">Size</div>
+                    <div class="statValue"><app-tri-val [value]=character.size></app-tri-val></div>
                 </div>
 
                 <div class="statRow">
-                    <div class="statName">Fielding</div>
-                    <div class="statValue">{{character.field}}</div>
+                    <div class="statName">Chemistry</div>
+                    <div class="statValue">{{character.chemistry}}</div>
 
-                    <div class="statName">Number</div>
-                    <div class="statValue">{{character.id}}</div>
+                    <div class="statName">Ability</div>
+                    <div class="statValue">{{character.ability}}</div>
+                </div>
+    
+                <div class="statRow">
+                    <div class="statName">Pch Stamina</div>
+                    <div class="statValue">{{character.stamina}}</div>
+
+                    <div class="statName">Pch Curve</div>
+                    <div class="statValue">{{character.curve}}</div>
                 </div>
                                 
                 <div class="statRow">
-                    <div class="statName">Pitching</div>
-                    <div class="statValue">{{character.pitch}}</div>
+                    <div class="statName">Change Up</div>
+                    <div class="statValue">{{character.changeIp}}</div>
 
-                    <div class="statName">Fielding</div>
-                    <div class="statValue">{{character.field}}</div>
+                    <div class="statName">Pch Velocity</div>
+                    <div class="statValue">{{character.velocity}}</div>
                 </div>
         
                 <div class="statRow">
-                    <div class="statName">Info</div>
+                    <div class="statName">Description</div>
                     <div class="statValue">{{character.description}}</div>
 
-                    <div class="statName">Number</div>
-                    <div class="statValue">{{character.id}}</div>
+                    <div class="statName">Orig. Game</div>
+                    <div class="statValue">{{character.originGroup}}</div>
                 </div>
 
             </mat-card>

@@ -7,6 +7,11 @@ table {
     min-height: 1000px;
 }
 
+.detail-card {
+    align-content: center;
+    margin: auto;
+}
+
 .year-table {
     
 }
@@ -35,7 +40,8 @@ table {
 }
 
 .specific-img {
-    width: 220px;
+    max-width: 190px;
+    max-height: 280px;
     justify-content: center;
     margin-left: 0px;
 }
@@ -46,7 +52,7 @@ table {
 }
 
 .statName {
-    width: 80px;
+    width: 95px;
     text-align: right;
 }
 
