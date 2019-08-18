@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '../../models/character';
+import { StatCollection } from '../../models/stat-collection';
 import { CharacterService } from '../../services/character.service';
+import { StatCollectionService } from '../../services/stat-collection.service';
 import { Observable } from 'rxjs';
 import { AnalyticBlock } from '../../models/analytic-block';
 
@@ -13,6 +15,8 @@ import { AnalyticBlock } from '../../models/analytic-block';
 export class CharacterComponent implements OnInit {
 
   character: Character;
+  stats: StatCollection;
+
   seasons = [
     { num1: 2001, num2: 1, num3: .314, num4: .401, num5: .345, num6: .345, num7: .345, num8: .345, num9: .345 },
     { num1: 2002, num2: 5, num3: .365, num4: .475, num5: .324, num6: .345, num7: .345, num8: .345, num9: .345 },
@@ -37,6 +41,7 @@ export class CharacterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private characterService: CharacterService,
+    private statCollectionService: StatCollectionService,
   ) { }
 
   ngOnInit() {
@@ -55,6 +60,11 @@ export class CharacterComponent implements OnInit {
       const name = params['name'];
       console.log('Need to find character: ' + name);
       this.character = this.characterService.getCharacterByName(name);
+      this.statCollectionService.getStatCollection(this.character.id).subscribe(
+        (s) => {
+          this.stats = s;
+        }
+      )
     });
 
     // this.characterService.getCharacterByName(name).subscribe(
