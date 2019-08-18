@@ -8,4 +8,5 @@ export class Team {
     draws: number;
     pointsFor: number;
     pointsAgainst: number;
+    winPct: string;
 }

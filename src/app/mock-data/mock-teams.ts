@@ -10,7 +10,8 @@ export const TEAMS: Team[] = [
     pointsFor: 0,
     pointsAgainst: 0,
     seasonId: '5c886f2c59e2dd2620cf4463',
-    managerId: '5c886f5959e2dd2620cf4464'
+    managerId: '5c886f5959e2dd2620cf4464',
+    winPct: '.200'
   },
   {
     id: '5c8c5c8490ccc8221c5c93a8',
@@ -21,7 +22,8 @@ export const TEAMS: Team[] = [
     pointsFor: 0,
     pointsAgainst: 0,
     seasonId: '5c886f2c59e2dd2620cf4463',
-    managerId: '5c8c5b1d90ccc8221c5c93a1'
+    managerId: '5c8c5b1d90ccc8221c5c93a1',
+    winPct: '.500'
   },
   {
     id: '5c8c5cd690ccc8221c5c93aa',
@@ -32,7 +34,8 @@ export const TEAMS: Team[] = [
     pointsFor: 0,
     pointsAgainst: 0,
     seasonId: '5c886f2c59e2dd2620cf4463',
-    managerId: '5c8c5b1790ccc8221c5c93a0'
+    managerId: '5c8c5b1790ccc8221c5c93a0',
+    winPct: '.700'
   }
 
 ];

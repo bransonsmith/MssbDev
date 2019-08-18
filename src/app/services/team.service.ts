@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Team } from '../models/team';
 import { TEAMS } from '../mock-data/mock-teams';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +11,6 @@ export class TeamService {
   private url = 'https://localhost:44385/api/team';
 
   constructor(
-    private http: HttpClient
   ) { }
 
 

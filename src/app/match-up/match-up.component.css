@@ -204,6 +204,15 @@ table {
     height: 24px;
   }
 
+  .roster-instruction {
+    margin: auto;
+    text-align: center;
+    font-size: 30px; 
+    color: var(--object-fancy-text-color);
+    height: 65px;
+    padding-bottom: 8px;
+  }
+
   .roster-col {
       width: 300px;
       margin: auto;
@@ -224,18 +233,23 @@ table {
   .rosters-section {
       display: flex;
   } */
-  .random-buttom{
-        box-shadow: var(--card-shadow);    
-        background-color: var(--object-color-brighter);
+  .random-button{
 
         margin: auto;        
-        margin-top: 15px;
-        margin-bottom: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
         width: 100px;
+  }
+  .random-button-longer {
+        width: 180px;
   }
 
   .roster-col-options {
         display: flex;
         margin-top: 10px;
         margin-bottom: 10px;
+  }
+
+  .team-picker {
+      color: var(--object-fancy-text-color);
   }

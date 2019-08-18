@@ -7,11 +7,13 @@ import { DetailsComponent } from './general-compnents/details/details.component'
 import { CollectionsComponent } from './general-compnents/collections/collections.component';
 import { CharacterComponent } from './+character/character/character.component';
 import { MatchUpComponent } from './match-up/match-up.component';
+import { TeamsHomeComponent } from './+team/teams-home/teams-home.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'characters/:name', component: CharacterComponent },
+  { path: 'teams', component: TeamsHomeComponent },
   { path: 'collections', component: CollectionsComponent },
   { path: 'matchUp', component: MatchUpComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

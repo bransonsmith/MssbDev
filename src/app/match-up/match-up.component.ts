@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CHARACTERS } from '../mock-data/mock-characters';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatGridTile } from '@angular/material/grid-list';
+import { Team } from '../models/team';
+import { TEAMS } from '../mock-data/mock-teams';
 
 @Component({
   selector: 'app-match-up',
@@ -23,6 +25,7 @@ import { MatGridTile } from '@angular/material/grid-list';
 export class MatchUpComponent implements OnInit {
 
   unpickedCharacters: Character[] = CHARACTERS;
+  teams: Team[] = TEAMS;
 
   leftRoster: Character[] = this.getEmptyRoster();
   rightRoster: Character[] = this.getEmptyRoster();
@@ -37,6 +40,8 @@ export class MatchUpComponent implements OnInit {
 
   dataSource = this.unpickedCharacters;
   columnsToDisplay = ['name'];
+  selectedRight = 'Team';
+  selectedLeft = 'Team';
   // expandedElement: PeriodicElement | null;
 
   constructor() { }
@@ -44,6 +49,47 @@ export class MatchUpComponent implements OnInit {
   ngOnInit() {
     this.selectedIndex = this.defaultSelecedIndex;
     this.selectedSection = this.defaultSelecedSection;
+  }
+
+  allEmpty(roster: Character[]) {
+
+    roster.forEach(c => {
+      if (c.name !== 'Empty') {
+        return false;
+      }
+    });
+
+    return true;
+  }
+
+  getOtherTeams() {
+    const unpicked: Team[] = [];
+
+    this.teams.forEach(t => {
+      let rtName;
+      if (this.selectedRight === null) {
+        rtName = '';
+      } else {
+        rtName = this.selectedRight;
+      }
+
+      let lfName;
+      if (this.selectedLeft === null) {
+        lfName = '';
+      } else {
+        lfName = this.selectedLeft;
+      }
+
+      console.log('Left Name = ' + lfName);
+      if (t.name !== rtName && t.name !== lfName) {
+          unpicked.push(t);
+      }
+    });
+    return unpicked;
+  }
+
+  fillWithTeamRoster(team: string, roster: Character[]) {
+    console.log('Need to fill roster with players from ' + team);
   }
 
   isFirstSlotCaptain(roster: Character[]): boolean {
