@@ -9,11 +9,13 @@ import { CharacterComponent } from './+character/character/character.component';
 import { MatchUpComponent } from './match-up/match-up.component';
 import { TeamsHomeComponent } from './+team/teams-home/teams-home.component';
 import { CharactersHomeComponent } from './+character/characters-home/characters-home.component';
+import { TeamComponent } from './+team/team/team.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'characters/:name', component: CharacterComponent },
+  { path: 'teams/:name', component: TeamComponent },
   { path: 'teams', component: TeamsHomeComponent },
   { path: 'characters', component: CharactersHomeComponent },
   { path: 'collections', component: CollectionsComponent },

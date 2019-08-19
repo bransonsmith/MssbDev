@@ -8,3 +8,7 @@
     border: 5px;
     
 }
+
+.star-line {
+    display: flex;
+}

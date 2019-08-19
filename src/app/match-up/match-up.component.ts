@@ -8,6 +8,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatGridTile } from '@angular/material/grid-list';
 import { Team } from '../models/team';
 import { TEAMS } from '../mock-data/mock-teams';
+import { CharacterService } from '../services/character.service';
 
 @Component({
   selector: 'app-match-up',
@@ -24,7 +25,7 @@ import { TEAMS } from '../mock-data/mock-teams';
 
 export class MatchUpComponent implements OnInit {
 
-  unpickedCharacters: Character[] = CHARACTERS;
+  unpickedCharacters: Character[];
   teams: Team[] = TEAMS;
 
   leftRoster: Character[] = this.getEmptyRoster();
@@ -44,11 +45,21 @@ export class MatchUpComponent implements OnInit {
   selectedLeft = 'Team';
   // expandedElement: PeriodicElement | null;
 
-  constructor() { }
+  constructor(
+    private characterService: CharacterService,
+  ) { }
 
   ngOnInit() {
+    this.unpickedCharacters = [];
     this.selectedIndex = this.defaultSelecedIndex;
     this.selectedSection = this.defaultSelecedSection;
+    this.characterService.getCharacters().subscribe(
+      (cs) => {
+        cs.forEach(c => {
+          this.unpickedCharacters.push(this.cloneCharacter(c));
+        });
+      }
+    );
   }
 
   allEmpty(roster: Character[]) {

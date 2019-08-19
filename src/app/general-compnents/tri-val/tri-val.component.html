@@ -1,8 +1,49 @@
 <div class="tri-val">
 
-    <div class="filled-star"><mat-icon>star</mat-icon></div>
-    <div class="filled-star"><mat-icon>star</mat-icon></div>
-    <div class="filled-star"><mat-icon>star</mat-icon></div>
+    <!-- star star_border star_half  -->
+
+    <div class="star-line"  *ngIf="value<=0"> 
+        <div class="filled-star"><mat-icon>star_border</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_border</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_border</mat-icon></div>
+    </div>
+
+    <div class="star-line"  *ngIf="value>=.5 && value < 1"> 
+        <div class="filled-star"><mat-icon>star_half</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_border</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_border</mat-icon></div>
+    </div>
+
+    <div class="star-line"  *ngIf="value>=1 && value < 1.5"> 
+        <div class="filled-star"><mat-icon>star</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_border</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_border</mat-icon></div>
+    </div>
+
+    <div class="star-line"  *ngIf="value>=1.5 && value < 2"> 
+        <div class="filled-star"><mat-icon>star</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_half</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_border</mat-icon></div>
+    </div>
+
+    <div class="star-line"  *ngIf="value>=2 && value < 2.5"> 
+        <div class="filled-star"><mat-icon>star</mat-icon></div>
+        <div class="filled-star"><mat-icon>star</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_border</mat-icon></div>
+    </div>
+
+    <div class="star-line"  *ngIf="value>=2.5 && value < 3"> 
+        <div class="filled-star"><mat-icon>star</mat-icon></div>
+        <div class="filled-star"><mat-icon>star</mat-icon></div>
+        <div class="filled-star"><mat-icon>star_half</mat-icon></div>
+    </div>
+
+    <div class="star-line"  *ngIf="value>=3"> 
+        <div class="filled-star"><mat-icon>star</mat-icon></div>
+        <div class="filled-star"><mat-icon>star</mat-icon></div>
+        <div class="filled-star"><mat-icon>star</mat-icon></div>
+    </div>
+
 
 </div>
 

@@ -29,7 +29,7 @@ export class TeamService {
   getTeam(name: string): Observable<Team> {
     return of(TEAMS.find(team => team.name === name));
   }
-
+  
   // getTeam(name: string): Observable<Team> {
   //   const url = `${this.url}/name/${name}`;
   //   return this.http.get<Team>(url).pipe(

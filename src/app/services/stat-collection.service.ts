@@ -18,6 +18,9 @@ export class StatCollectionService {
     return of(STATCOLLECTIONS);
   }
 
+  getEntStatCollections(entId: string): Observable<StatCollection[]> {
+    return of(STATCOLLECTIONS.filter(statCollection => statCollection.EntId === entId));
+  }
   // getStatCollections(): Observable<StatCollection[]> {
   //   return this.http.get<StatCollection[]>(this.url)
   //     .pipe(

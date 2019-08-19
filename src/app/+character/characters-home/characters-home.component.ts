@@ -3,6 +3,7 @@ import { Character } from '../../models/character';
 import { SortStat } from '../../models/sort-stat';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CHARACTERS } from '../../mock-data/mock-characters';
+import { CharacterService } from 'src/app/services/character.service';
 
 @Component({
   selector: 'app-characters-home',
@@ -11,16 +12,25 @@ import { CHARACTERS } from '../../mock-data/mock-characters';
 })
 export class CharactersHomeComponent implements OnInit {
 
-  characters: Character[] = CHARACTERS;
+  characters: Character[];
 
   sortedStat: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private characterService: CharacterService,
   ) { }
 
   ngOnInit() {
+    this.characters = [];
+    this.characterService.getCharacters().subscribe(
+      (cs) => {
+        cs.forEach(c => {
+          this.characters.push(this.cloneCharacter(c));
+        });
+      }
+    );
   }
 
   onCharacterClick(character: Character) {
@@ -218,4 +228,40 @@ export class CharactersHomeComponent implements OnInit {
     });
   }
 
+  cloneCharacter(character: Character): Character {
+
+    const clone = {
+      id: character.id,
+      name: character.name,
+      bat: character.bat,
+      field: character.field,
+      run: character.run,
+      pitch: character.pitch,
+      lean: character.lean,
+      zone: character.zone,
+      agility: character.agility,
+      coverage: character.coverage,
+      reachOut: character.reachOut,
+      reachIn: character.reachIn,
+      dive: character.dive,
+      size: character.size,
+      arm: character.arm,
+      jump: character.jump,
+      chemistry: character.chemistry,
+      stamina: character.stamina,
+      curve: character.curve,
+      velocity: character.velocity,
+      chargeVelocity: character.chargeVelocity,
+      changeUp: character.changeUp,
+      isCaptain: character.isCaptain,
+      captainAbilityOffense: character.captainAbilityOffense,
+      captainAbilityDefense: character.captainAbilityDefense,
+      description: character.description,
+      notes: character.notes,
+      ability: character.ability,
+      originGroup: character.originGroup,
+      tags: character.tags
+    };
+    return clone;
+  }
 }
