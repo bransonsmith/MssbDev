@@ -37,8 +37,8 @@ export class CharacterService {
   //   );
   // }
 
-  getCharacter(id: string): Character {
-    return CHARACTERS.find(character => character.id === id);
+  getCharacter(id: string): Observable<Character> {
+    return of(CHARACTERS.find(character => character.id === id));
   }
 
   getCharacters(): Observable<Character[]> {

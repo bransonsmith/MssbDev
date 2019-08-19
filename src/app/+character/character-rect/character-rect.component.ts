@@ -34,8 +34,8 @@ export class CharacterRectComponent implements OnInit {
   }
 
   replaceLongNameWords(str: string): string {
-    const    longNames: string[] = ['Blue', 'Dark', 'Gray', 'Green', 'Light', 'Koopa', 'Pink', 'Purple', 'Red', 'White', 'Yellow'];
-    const replacements: string[] = ['B.',    'D.',   'G.',   'Gn.',   'Lt',      '',   'Pk.',   'P.',     'R.',    'W.',     'Y.'];
+    const    longNames: string[] = ['Blue', 'Brown', 'Dark', 'Gray', 'Green', 'Light', 'Koopa', 'Pink', 'Purple', 'Red', 'White', 'Yellow'];
+    const replacements: string[] = ['B.',    'Br.',  'D.',   'G.',   'Gn.',   'Lt',      '',   'Pk.',   'P.',     'R.',    'W.',     'Y.'];
 
     for (let i = 0; i < longNames.length; i++) {
       const color = longNames[i];

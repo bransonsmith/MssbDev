@@ -13,30 +13,13 @@ export class TeamService {
   constructor(
   ) { }
 
-
   getTeams(): Observable<Team[]> {
     return of(TEAMS);
   }
 
-  // getTeams(): Observable<Team[]> {
-  //   return this.http.get<Team[]>(this.url)
-  //     .pipe(
-  //       tap(_ => this.log('fetched teams')),
-  //       catchError(this.handleError<Team[]>('getTeams', []))
-  //     );
-  // }
-
   getTeam(name: string): Observable<Team> {
     return of(TEAMS.find(team => team.name === name));
   }
-  
-  // getTeam(name: string): Observable<Team> {
-  //   const url = `${this.url}/name/${name}`;
-  //   return this.http.get<Team>(url).pipe(
-  //     tap(_ => this.log(`fetched team name=${name}`)),
-  //     catchError(this.handleError<Team>(`getTeam name=${name}`))
-  //   );
-  // }
 
   private log(message: string) {
     console.log(message);
@@ -44,27 +27,13 @@ export class TeamService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
-
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }
-
-  private formattedTeams(teamList: Team[]) {
-
-    let str = '';
-    teamList.forEach(team => {
-      str += team.name;
-      str += ', ';
-    });
-
-    return str;
   }
 
 }

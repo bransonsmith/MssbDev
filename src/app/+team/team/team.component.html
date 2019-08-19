@@ -8,40 +8,33 @@
                     {{team.name}}
                 </mat-card-title>
 
-                <img mat-card-image src='../../../assets/images/team/main/{{team.name}}.png' alt="Detailed Picture" class="specific-img">
+                <img mat-card-image src='../../../assets/images/team/logo/{{team.name}}.png' alt="Detailed Picture" class="specific-img">
             </mat-card>
 
             <mat-card class="detail-card section-card">
                 
-                <div class="statRow">
-                    <div class="statName">Manager</div>
-                    <div class="statValue">{{team.managerId}}</div>
+                <mat-card class="header-row">
 
-                    <div class="statName">Season</div>
-                    <div class="statValue">{{team.seasonId}}</div>
-                </div>
+                    <div class="record-block">
+                        {{team.winPct}} | {{team.wins}} - {{team.losses}} - {{team.draws}}
+                    </div>
 
-                <div class="statRow">
-                    <div class="statName">Wins</div>
-                    <div class="statValue">{{team.wins}}</div>
+                    <div class="statRow">
+                        <div class="header-name">Manager</div>
+                        <div class="header-value">{{manager.name}}</div>
+    
+                        <div class="header-name">Season</div>
+                        <div class="header-value">{{season.name}}</div>
+                    </div>
 
-                    <div class="statName">Losses</div>
-                    <div class="statValue">{{team.losses}}</div>
-                </div>
+                </mat-card>
                 
-                <div class="statRow">
-                    <div class="statName">Ties</div>
-                    <div class="statValue">{{team.draws}}</div>
-                    
-                    <div class="statName">Win Pct</div>
-                    <div class="statValue">{{team.winPct}}</div>
-                </div>
-                                
+              
                 <div class="statRow">
                     <div class="statName">Runs For</div>
                     <div class="statValue">{{team.pointsFor}}</div>
 
-                    <div class="statName">Runs Against</div>
+                    <div class="statName">Runs Agnst</div>
                     <div class="statValue">{{team.pointsAgainst}}</div>
                 </div>
 
@@ -64,138 +57,153 @@
         <div class="performance-section">
             <mat-card class="table-card section-card">
                 <mat-card-title>Team Stats</mat-card-title>
-                <table mat-table [dataSource]="stats" class="year-table">
-                    <!-- Position Column -->
+                <table mat-table [dataSource]="playerStats" matSort matSortActive="PA" matSortDisableClear matSortDirection="desc" class="year-table">
+  
+                    <ng-container matColumnDef="Player">
+                        <th mat-header-cell *matHeaderCellDef> Character Name </th>
+                        <td mat-cell *matCellDef="let element" (click)="onNameClick(element.player)" class="clickable-cell"> <div class="table-font">{{getShortenedCharacterName(element.player)}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> Team Total </td>
+                    </ng-container>
+
                     <ng-container matColumnDef="PA">
                         <th mat-header-cell *matHeaderCellDef> PA </th>
-                        <td mat-cell *matCellDef="let element"> {{element.PA}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.PA}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('PA')}} </td>
                     </ng-container>
                     
-                    <!-- Name Column -->
                     <ng-container matColumnDef="AB">
                         <th mat-header-cell *matHeaderCellDef> AB </th>
-                        <td mat-cell *matCellDef="let element"> {{element.AB}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.AB}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('AB')}} </td>
                     </ng-container>
                     
-                    <!-- Weight Column -->
                     <ng-container matColumnDef="H">
                         <th mat-header-cell *matHeaderCellDef> H </th>
-                        <td mat-cell *matCellDef="let element"> {{element.H}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.H}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('H')}} </td>
                     </ng-container>
                     
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="DB">
                         <th mat-header-cell *matHeaderCellDef> DB </th>
-                        <td mat-cell *matCellDef="let element"> {{element.DB}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.DB}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('DB')}} </td>
                     </ng-container>
     
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="TB">
                         <th mat-header-cell *matHeaderCellDef> TB </th>
-                        <td mat-cell *matCellDef="let element"> {{element.TB}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.TB}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('TB')}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="HR">
                         <th mat-header-cell *matHeaderCellDef> HR </th>
-                        <td mat-cell *matCellDef="let element"> {{element.HR}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.HR}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('HR')}} </td>
                     </ng-container>
                     
-                    <!-- Name Column -->
                     <ng-container matColumnDef="R">
                         <th mat-header-cell *matHeaderCellDef> R </th>
-                        <td mat-cell *matCellDef="let element"> {{element.R}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.R}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('R')}} </td>
                     </ng-container>
                     
-                    <!-- Weight Column -->
                     <ng-container matColumnDef="RBI">
                         <th mat-header-cell *matHeaderCellDef> RBI </th>
-                        <td mat-cell *matCellDef="let element"> {{element.RBI}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.RBI}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('RBI')}} </td>
                     </ng-container>
                     
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="SO">
                         <th mat-header-cell *matHeaderCellDef> SO </th>
-                        <td mat-cell *matCellDef="let element"> {{element.SO}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.SO}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('SO')}} </td>
                     </ng-container>
     
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="BBFC">
-                        <th mat-header-cell *matHeaderCellDef> BBFC </th>
-                        <td mat-cell *matCellDef="let element"> {{element.BBFC}} </td>
-                    </ng-container>
-
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="SB">
-                        <th mat-header-cell *matHeaderCellDef> SB </th>
-                        <td mat-cell *matCellDef="let element"> {{element.SB}} </td>
-                    </ng-container>
-                    
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="IP">
-                        <th mat-header-cell *matHeaderCellDef> IP </th>
-                        <td mat-cell *matCellDef="let element"> {{element.IP}} </td>
-                    </ng-container>
-
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="ER">
-                        <th mat-header-cell *matHeaderCellDef> ER </th>
-                        <td mat-cell *matCellDef="let element"> {{element.ER}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="K">
-                        <th mat-header-cell *matHeaderCellDef> K </th>
-                        <td mat-cell *matCellDef="let element"> {{element.K}} </td>
-                    </ng-container>
-                    
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="W">
-                        <th mat-header-cell *matHeaderCellDef> W </th>
-                        <td mat-cell *matCellDef="let element"> {{element.W}} </td>
-                    </ng-container>
-                    
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="L">
-                        <th mat-header-cell *matHeaderCellDef> L </th>
-                        <td mat-cell *matCellDef="let element"> {{element.L}} </td>
-                    </ng-container>
-                    
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="AVG">
                         <th mat-header-cell *matHeaderCellDef> AVG </th>
-                        <td mat-cell *matCellDef="let element"> {{element.AVG}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{formatDec(element.stats.AVG)}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('AVG')}} </td>
                     </ng-container>
 
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="OBP">
                         <th mat-header-cell *matHeaderCellDef> OBP </th>
-                        <td mat-cell *matCellDef="let element"> {{element.OBP}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{formatDec(element.stats.OBP)}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('OBP')}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="SLUG">
                         <th mat-header-cell *matHeaderCellDef> SLUG </th>
-                        <td mat-cell *matCellDef="let element"> {{element.SLUG}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{formatDec(element.stats.SLUG)}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('SLUG')}} </td>
                     </ng-container>
                     
-                    <!-- Name Column -->
                     <ng-container matColumnDef="OPS">
                         <th mat-header-cell *matHeaderCellDef> OPS </th>
-                        <td mat-cell *matCellDef="let element"> {{element.OPS}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{formatDec(element.stats.OPS)}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('OPS')}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="BBFC">
+                        <th mat-header-cell *matHeaderCellDef> BBFC </th>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.BBFC}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('BBFC')}} </td>
+                    </ng-container>
+
+                    <!-- <ng-container matColumnDef="SB">
+                        <th mat-header-cell *matHeaderCellDef> SB </th>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.SB}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('SB')}} </td>
+                    </ng-container> -->
+                    
+ 
+                    
+                    <!-- <ng-container matColumnDef="W">
+                        <th mat-header-cell *matHeaderCellDef> W </th>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.W}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('W')}} </td>
                     </ng-container>
                     
-                    <!-- Weight Column -->
+                    <ng-container matColumnDef="L">
+                        <th mat-header-cell *matHeaderCellDef> L </th>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.L}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('L')}} </td>
+                    </ng-container> -->
+                    
+ 
+
+                    <ng-container matColumnDef="IP">
+                        <th mat-header-cell *matHeaderCellDef> IP </th>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.IP}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('IP')}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ER">
+                        <th mat-header-cell *matHeaderCellDef> ER </th>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.ER}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('ER')}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="K">
+                        <th mat-header-cell *matHeaderCellDef> K </th>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.K}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('K')}} </td>
+                    </ng-container>
+                    
                     <ng-container matColumnDef="ERA">
                         <th mat-header-cell *matHeaderCellDef> ERA </th>
-                        <td mat-cell *matCellDef="let element"> {{element.ERA}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{formatDec(element.stats.ERA)}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('ERA')}} </td>
                     </ng-container>
                     
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="K5">
                         <th mat-header-cell *matHeaderCellDef> K5 </th>
-                        <td mat-cell *matCellDef="let element"> {{element.K5}} </td>
+                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{formatDec(element.stats.K5)}}</div> </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('K5')}} </td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
                 </table>
 
         <!-- displayedColumns: string[] = ['PA', 'AB', 'H', 'DB', 'TB', 'HR', 'R', 'RBI', 'SO', 'BBFC', 'SB', 'IP', 'ER', 'K', 'W', 'L', 'AVG', 'OBP', 'SLUG', 'OPS', 'ERA', 'K5']; -->

@@ -1,6 +1,24 @@
 table {
     width: 100%;
 }
+tr.mat-footer-row {
+    font-weight: bold;
+}
+td.mat-footer-cell {
+    text-align: center;
+}
+th.mat-header-cell {
+    text-align: center;
+}
+
+/* .mat-cell {
+    text-align: center;
+} */
+
+.table-font {
+    font-size: 11px;
+    text-align: center;
+}
 
 .details-card {
     box-shadow: var(--card-shadow);
@@ -59,4 +77,50 @@ table {
 .statValue {
     width: 145px;
     padding-left: 12px;
+}
+
+
+.header-row {
+    display: flex;
+    height: fit-content;
+    background-color: var(--object-color-brighter);
+    margin-bottom: 12px;
+}
+
+
+.record-block {
+    display: flex;
+    font-size: 24px;
+    text-align: center;
+    color: var(--accent-color);
+    margin: auto;
+    margin-right: 10px;
+}
+
+.header-name {
+    font-size: 16px;
+    text-align: center;
+    color: var(--object-text-color);
+    margin: auto;
+    margin-right: 6px;
+    margin-left: 10px;
+}
+
+.header-value {
+    font-size: 16px;
+    text-align: center;
+    color: var(--accent-color);
+    margin: auto;
+}
+
+
+.clickable-cell {
+    font: bold;
+    cursor: pointer;
+    color: rgb(69, 42, 165);
+}
+
+.clickable-cell:hover {
+    font: bold;
+    cursor: pointer;
 }
