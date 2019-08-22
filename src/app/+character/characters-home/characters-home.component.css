@@ -80,3 +80,58 @@
 .sort-text {
     margin-right: 15px;
 }
+
+.seperator {
+    height: 40px;
+}
+
+table {
+    width: 100%;
+    padding: 0;
+}
+tr.mat-footer-row {
+    font-size: 9px;
+    font-weight: bold;
+}
+td.mat-footer-cell {
+    text-align: center;
+    font-size: 9px;
+    font-weight: bold;
+}
+th.mat-header-cell {
+    text-align: center;
+}
+td.mat-cell {
+    padding: 0;
+}
+td.mat-column {
+    padding: 0;
+}
+td.mat-row {
+    padding: 0;
+}
+md-list-item, md-list-item .md-list-item-inner {
+    padding: 0;
+}
+mat-list-item, mat-list-item .mat-list-item-inner {
+    padding: 0;
+}
+/* .mat-cell {
+    text-align: center;
+} */
+
+.table-font {
+    font-size: 11px;
+    text-align: center;
+}
+
+.clickable-cell {
+    font: bold;
+    cursor: pointer;
+    color: rgb(69, 42, 165);
+}
+
+.clickable-cell:hover {
+    font: bold;
+    cursor: pointer;
+}

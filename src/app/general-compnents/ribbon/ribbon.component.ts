@@ -37,4 +37,12 @@ export class RibbonComponent implements OnInit {
     this.router.navigateByUrl('home');
   }
 
+  handleManagersClick(event: Event) {
+    this.router.navigateByUrl('managers');
+  }
+
+  handleSeasonsClick(event: Event) {
+    this.router.navigateByUrl('seasons');
+  }
+
 }

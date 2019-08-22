@@ -20,6 +20,17 @@ th.mat-header-cell {
     text-align: center;
 }
 
+.clickable-cell {
+    font: bold;
+    cursor: pointer;
+    color: rgb(69, 42, 165);
+}
+
+.clickable-cell:hover {
+    font: bold;
+    cursor: pointer;
+}
+
 .details-card {
     box-shadow: var(--card-shadow);
     min-height: 1000px;
@@ -113,14 +124,3 @@ th.mat-header-cell {
     margin: auto;
 }
 
-
-.clickable-cell {
-    font: bold;
-    cursor: pointer;
-    color: rgb(69, 42, 165);
-}
-
-.clickable-cell:hover {
-    font: bold;
-    cursor: pointer;
-}

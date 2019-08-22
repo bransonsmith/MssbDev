@@ -68,6 +68,10 @@ import { TeamsHomeComponent } from './+team/teams-home/teams-home.component';
 import { TriValComponent } from './general-compnents/tri-val/tri-val.component';
 import { CharactersHomeComponent } from './+character/characters-home/characters-home.component';
 import { TeamComponent } from './+team/team/team.component';
+import { SeasonHomeComponent } from './+season/season-home/season-home.component';
+import { ManagerHomeComponent } from './+manager/manager-home/manager-home.component';
+import { ManagerComponent } from './+manager/manager/manager.component';
+import { SeasonComponent } from './+season/season/season.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +94,10 @@ import { TeamComponent } from './+team/team/team.component';
     TriValComponent,
     CharactersHomeComponent,
     TeamComponent,
+    SeasonHomeComponent,
+    ManagerHomeComponent,
+    ManagerComponent,
+    SeasonComponent,
   ],
   imports: [
     BrowserModule,
