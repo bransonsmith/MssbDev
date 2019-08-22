@@ -1,0 +1,23 @@
+.header-spacer {
+    width: 100px;
+    font: bold;
+    font-size: 16px;
+    text-align: center;
+    color: var(--accent-color);
+}
+
+.tb-text {
+    font-size: 13px;
+    text-align: center;
+    width: 100px;
+}
+
+.tb-head {
+    font: bolder;
+    font-size: 18px;
+    color: var(--accent-color);
+}
+
+.team-col {
+    width: 150px;
+}

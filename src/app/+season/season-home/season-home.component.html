@@ -1,1 +1,32 @@
-<p>season-home works!</p>
+<div [hidden]=false>
+    <mat-card class="seasons-card">
+    
+        <mat-tab-group>
+            <ul>
+                <li *ngFor="let si of seasonInfo">
+                    <mat-tab class="season-tab" label="{{si.season.name}}">
+                        <mat-card>
+                            <mat-list role="list">
+                                <mat-list-item role="header">
+                                    <div class="tb-text tb-head team-col">Team</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">Win%</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">W</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">L</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">D</div><div class="tb-spacer">|</div>
+                                </mat-list-item>
+                                <mat-list-item role="listitem"  *ngFor="let team of si.teams">
+                                    <div class="tb-text team-col">{{team.name}}</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">{{team.winPct}}</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">{{team.wins}}</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">{{team.losses}}</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">{{team.draws}}</div><div class="tb-spacer">|</div>
+                                </mat-list-item>
+                            </mat-list>
+                        </mat-card>
+                    </mat-tab>
+                </li>
+            </ul>
+        </mat-tab-group>
+
+    </mat-card>    
+</div>
