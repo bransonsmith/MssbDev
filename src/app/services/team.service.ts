@@ -25,6 +25,10 @@ export class TeamService {
     return of(TEAMS.filter(team => team.seasonId === id));
   }
 
+  getTeamsForManager(id: string): Observable<Team[]> {
+    return of(TEAMS.filter(team => team.managerId === id));
+  }
+
   private log(message: string) {
     console.log(message);
   }

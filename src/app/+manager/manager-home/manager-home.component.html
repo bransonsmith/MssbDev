@@ -1,42 +1,32 @@
 <div [hidden]=false>
-    <mat-card class="managers-card">
+        <mat-card class="managers-card">
+        
+            <mat-tab-group>
+                <ul>
+                    <li *ngFor="let si of managerInfo">
+                        <mat-tab class="manager-tab" label="{{si.manager.name}}">
+                            <mat-card>
+                                <mat-list role="list">
+                                    <mat-list-item role="header">
+                                        <div class="tb-text tb-head team-col">Team</div><div class="tb-spacer">|</div>
+                                        <div class="tb-text tb-head">Win%</div><div class="tb-spacer">|</div>
+                                        <div class="tb-text tb-head">W</div><div class="tb-spacer">|</div>
+                                        <div class="tb-text tb-head">L</div><div class="tb-spacer">|</div>
+                                        <div class="tb-text tb-head">D</div><div class="tb-spacer">|</div>
+                                    </mat-list-item>
+                                    <mat-list-item role="listitem"  *ngFor="let team of si.teams">
+                                        <div class="tb-text team-col">{{team.name}}</div><div class="tb-spacer">|</div>
+                                        <div class="tb-text">{{team.winPct}}</div><div class="tb-spacer">|</div>
+                                        <div class="tb-text">{{team.wins}}</div><div class="tb-spacer">|</div>
+                                        <div class="tb-text">{{team.losses}}</div><div class="tb-spacer">|</div>
+                                        <div class="tb-text">{{team.draws}}</div><div class="tb-spacer">|</div>
+                                    </mat-list-item>
+                                </mat-list>
+                            </mat-card>
+                        </mat-tab>
+                    </li>
+                </ul>
+            </mat-tab-group>
     
-        <div class="manager-section">
-            <mat-card class="table-card section-card">
-                <mat-card-title>{{title}}</mat-card-title>
-                <table mat-table [dataSource]="dataSource" matSort class="manager-table">
-
-                    <!-- 'name', 'number', 'info', 'bat', 'draws' -->
-                    <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> name </th>
-                        <td mat-cell *matCellDef="let manager" (click)="onNameClick(manager)" class="clickable-cell"> {{manager.name}} </td>
-                    </ng-container>
-    
-                    <ng-container matColumnDef="winPct">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> W% </th>
-                        <td mat-cell *matCellDef="let manager"> {{manager.winPct}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="wins">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> W </th>
-                        <td mat-cell *matCellDef="let manager"> {{manager.wins}} </td>
-                    </ng-container>
-                    
-                    <ng-container matColumnDef="losses">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> L </th>
-                        <td mat-cell *matCellDef="let manager"> {{manager.losses}} </td>
-                    </ng-container>
-    
-                    <ng-container matColumnDef="draws">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> D </th>
-                        <td mat-cell *matCellDef="let manager"> {{manager.draws}} </td>
-                    </ng-container>
-                    
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-            </mat-card>
-        </div>
-
-    </mat-card>    
-</div>
+        </mat-card>    
+    </div>
