@@ -15,9 +15,30 @@
 .tb-head {
     font: bolder;
     font-size: 18px;
-    color: var(--accent-color);
+    color: var(--object-fancy-text-color);
 }
 
 .team-col {
     width: 150px;
+}
+
+.info-section {
+    background-color: var(--object-color-brighter);
+    color: var(--object-text-color);
+    margin: 25px;
+}
+
+.tabs {
+    background-color: var(--object-color);
+    color: var(--object-fancy-text-color);
+}
+
+.seasons-card {    
+    background-color: var(--background-color);
+    color: var(--object-text-color);
+}
+
+.season-tab {
+
+    color: var(--object-fancy-text-color);
 }

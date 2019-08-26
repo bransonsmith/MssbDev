@@ -1,5 +1,12 @@
-<mat-card class="home-card">
-    <mat-toolbar>
+<mat-card class="home-card" *ngIf="colNumSet()">
+    
+    <div class="title-row" id="title">
+        <mat-card-title class="title">
+            Characters
+        </mat-card-title>
+    </div>
+
+    <mat-toolbar class="sort-bar">
         <div class="sort-text">Sort By:</div>
         <button mat-button (click)="sortByNumber()" class="sort-by-button">id</button>
         <button mat-button (click)="sortByName()" class="sort-by-button">name</button>
@@ -12,7 +19,8 @@
     </mat-toolbar>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
     <mat-card-content>
-        <mat-grid-list cols="4" rowHeight="135px">
+        <div #theContainer>
+        <mat-grid-list cols="{{columnNum}}" rowHeight="135px">
             <mat-grid-tile
                 *ngFor="let character of characters"
                 [colspan]=1
@@ -32,7 +40,7 @@
                             <div class="stat-col">
                                 <app-sort-stat [sortStat]="getBatStat(character)"></app-sort-stat> 
                                 <app-sort-stat [sortStat]="getRunStat(character)"></app-sort-stat> 
-                                <app-sort-stat [sortStat]="getRatingTotal(character)"></app-sort-stat> 
+                                <!-- <app-sort-stat [sortStat]="getRatingTotal(character)"></app-sort-stat>  -->
                             </div>
     
                             <div class="stat-col">
@@ -47,11 +55,11 @@
 
                 
             </mat-grid-tile>
-        </mat-grid-list>
+        </mat-grid-list></div>
 
         <div class="seperator"></div>
 
-        <div class="performance-section">
+        <div class="performance-section" id="stats">
             <mat-card class="table-card section-card">
                 <mat-card-title>Character Stats</mat-card-title>
                 <table mat-table [dataSource]="playerStats" matSort matSortActive="PA" matSortDisableClear matSortDirection="desc" class="year-table">

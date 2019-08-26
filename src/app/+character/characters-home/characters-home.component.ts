@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { Character } from '../../models/character';
 import { SortStat } from '../../models/sort-stat';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -39,6 +39,10 @@ export class CharactersHomeComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
+  @ViewChild('theContainer', null) theContainer;
+  columnNum = 3;
+  tileSize = 200;
+
   // tslint:disable-next-line:max-line-length
   // displayedColumns: string[] = ['Player', 'PA', 'AB', 'H', 'DB', 'TB', 'HR', 'R', 'RBI', 'SO', 'BBFC', 'SB', 'IP', 'ER', 'K', 'W', 'L', 'AVG', 'OBP', 'SLUG', 'OPS', 'ERA', 'K5'];
   // tslint:disable-next-line:max-line-length
@@ -58,9 +62,28 @@ export class CharactersHomeComponent implements OnInit {
 
   ngOnInit() {
     this.fetchCharacterData();
-
+    
 
   }
+
+  colNumSet() {
+    return this.columnNum > 0;
+  }
+
+  setColNum() {
+    const width = this.theContainer.nativeElement.offsetWidth;
+    this.columnNum = Math.trunc(width / this.tileSize);
+  }
+
+  ngAfterViewInit() {
+    this.setColNum();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.setColNum();
+  }
+
 
   fetchCharacterData() {
     this.characters = [];
@@ -84,6 +107,7 @@ export class CharactersHomeComponent implements OnInit {
           );
         });
 
+        this.setColNum();
         this.dataSource = new MatTableDataSource(this.playerStats);
         this.dataSource.sort = this.sort;
       }

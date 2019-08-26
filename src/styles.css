@@ -4,15 +4,19 @@
 :root {
 
     --content-width: 800px;
+    --container-wd: 80%;
 
-    --primary-color: rgb(102, 168, 255);
+    --main-bg: rgb(255, 255, 255);
+    --container-bg: rgb(255, 255, 255);
+    --object-bg: rgb(235, 235, 235);
+    --object-bg-b: rgb(151, 248, 211);
+
+    --primary-color: rgb(59, 59, 59);
     --secondary-color: rgb(255, 255, 255);
-    --accent-color: rgb(59, 143, 253);
-    --object-color: rgb(219, 220, 221);
-    --object-color-brighter: rgb(204, 220, 255);
-    --object-fancy-text-color: rgb(59, 143, 253);
-    --object-text-color: rgb(46, 46, 46);
-    --alt-background-color: rgb(83, 83, 83);
+    --accent-color: rgb(45, 253, 156);
+
+    --object-fancy-text-color: rgb(22, 57, 214);
+    --object-text-color: rgb(82, 82, 82);
     --alt-contrast-primary-color: rgb(0, 255, 242);
     --alt-contrast-secondary-color: rgb(255, 0, 98);
 

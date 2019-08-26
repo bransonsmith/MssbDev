@@ -1,12 +1,13 @@
 
 .user-button {
   margin-right: 8px;
-  background-color: var(--secondary-color);
+  background-color: white;
+  color: black;
 }
 
 .home-button {
     margin-right: 8px;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     font: bold;
     font-size: 26px;
 }
@@ -16,19 +17,27 @@
 }
   
 .ribbon-button {
+    color: var(--accent-color);
 }
 
 .ribbon-spacer {
     flex: 1 1 auto;
 }
 
-.ribbon {
-    background-color: var(--primary-color);
+.ribbon {    
+    background-color: var(--secondary-color);
     padding: 0px, 0px, 10px, 0px;
     margin: 0px, 0px, 10px, 0px;
+    color: var(--accent-color);
     box-shadow: var(--thin-shadow);
 }
 
 .ribbon-font {
     font-weight: 700;
+}
+
+.container {
+    width: var(--container-wd);
+    margin: auto;
+    display: flex;
 }

@@ -1,15 +1,33 @@
 .footer-spacer{
     margin-top: 10px;
+    background-color: var(--main-bg);
     
 }
 .header-spacer{
-    margin-top: 10px;
+    margin: 10px 0;
+    background-color: var(--main-bg);
     
 }
+
 .divider {
     
 }
 .all-content {
     max-width: var(--content-width);
     margin: auto;
+    background-color: var(--main-bg);
+}
+
+.container {
+    width: var(--container-wd);
+    background-color: var(--main-bg);
+    margin: 0 auto;
+    padding: 0;
+}
+.all {
+    background-color: var(--main-bg);
+}
+
+body {
+    background-color: var(--main-bg);
 }

@@ -1,13 +1,18 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<div class="all-content">
-  <app-header></app-header>
-  <div class="header-spacer"></div>
+<div class="all">
+    <app-header></app-header>
 
-  <router-outlet></router-outlet>
-
-  <div class="footer-spacer"></div>
-  <div class="divider"><mat-divider></mat-divider></div>
-
-  <app-footer></app-footer>
+    <mat-card class="container">
+        <div class="header-spacer"></div>
+    
+        <router-outlet></router-outlet>
+      
+        <div class="footer-spacer"></div>
+        <div class="divider"><mat-divider></mat-divider></div>
+    </mat-card>
+    
+    <app-footer></app-footer>
 </div>
+
+

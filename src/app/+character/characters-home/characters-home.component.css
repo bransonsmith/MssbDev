@@ -1,10 +1,28 @@
 .home-card {
-    box-shadow: var(--card-shadow);
+    box-shadow: 0; 
     min-height: 1000px;
+    background-color: var(--container-bg); 
+}
+
+.title {
+    color: var(--accent-color);
+    font: bold;
+    font-size: 28px;
+    margin: 0 25px;
+}
+
+.title-row {
+    display: flex;
+} 
+
+.jump-button {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    margin: 0, 30px;
 }
 
 .character {
-    background-color: var(--object-color);
+    background-color: var(--object-bg);
     color: var(--object-text-color);
     width: 160px;
     height: 120px;
@@ -16,9 +34,9 @@
     margin: 12px;
 }
 .character:hover {
-    background-color: var(--object-color-brighter);
+    background-color: var(--object-bg-b);
     box-shadow: var(--card-shadow);
-    border-color: rgb(255, 47, 92);
+    border-color: var(--accent-color);
     border-width: 3px;
     border-style: solid;
 }
@@ -28,16 +46,16 @@
     font-size: 18px;
     text-align: center;
     margin: auto;
+    color: var(--accent-color);
 }
 
 .top-row {
     display: flex;
-    color: var(--object-fancy-text-color);
     height: 54px;
 }
 
 .character-id {
-    background-color: var(--accent-color); 
+    background-color: var(--accent-color);
     color: var(--secondary-color); 
     height: 16px;
     width: 18px;
@@ -70,8 +88,16 @@
 
 }
 
+.sort-bar {
+    background-color: var(--object-bg);
+    color: var(--object-text-color);
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
 .sort-by-button {
-    background-color: var(--secondary-color);
+    background-color: var(--object-bg-b);
+    color: black;
     box-shadow: var(--card-shadow);
     margin-right: 15px;
     margin: auto;
@@ -88,6 +114,7 @@
 table {
     width: 100%;
     padding: 0;
+    background-color: var(--object-bg);
 }
 tr.mat-footer-row {
     font-size: 9px;
@@ -109,6 +136,7 @@ td.mat-column {
 }
 td.mat-row {
     padding: 0;
+    background-color: var(--object-bg-b);
 }
 md-list-item, md-list-item .md-list-item-inner {
     padding: 0;
@@ -119,7 +147,10 @@ mat-list-item, mat-list-item .mat-list-item-inner {
 /* .mat-cell {
     text-align: center;
 } */
-
+.table-card {
+    background-color: var(--container-bg);
+    color: var(--accent-color);
+}
 .table-font {
     font-size: 11px;
     text-align: center;
@@ -128,7 +159,7 @@ mat-list-item, mat-list-item .mat-list-item-inner {
 .clickable-cell {
     font: bold;
     cursor: pointer;
-    color: rgb(69, 42, 165);
+    color: var(--alt-contrast-secondary-color);
 }
 
 .clickable-cell:hover {

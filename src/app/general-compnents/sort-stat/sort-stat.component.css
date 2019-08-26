@@ -1,7 +1,7 @@
 .primary-text {
     font:bold;
     font-size: 14px;
-    color: var(--accent-color);
+    color: var(--secondary-color);
     display: flex;
 }
 

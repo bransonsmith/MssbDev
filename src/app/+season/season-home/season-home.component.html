@@ -1,11 +1,13 @@
 <div [hidden]=false>
     <mat-card class="seasons-card">
     
-        <mat-tab-group>
+        <mat-tab-group class="tabs">
             <ul>
                 <li *ngFor="let si of seasonInfo">
                     <mat-tab class="season-tab" label="{{si.season.name}}">
-                        <mat-card>
+                        
+                        <mat-card class="info-section">
+                            <mat-card-title>Teams</mat-card-title>
                             <mat-list role="list">
                                 <mat-list-item role="header">
                                     <div class="tb-text tb-head team-col">Team</div><div class="tb-spacer">|</div>
@@ -23,7 +25,37 @@
                                 </mat-list-item>
                             </mat-list>
                         </mat-card>
-                    </mat-tab>
+                    
+                        <mat-card class="info-section">
+                            <mat-card-title>Team Stats</mat-card-title>
+                            <mat-list role="list">
+                                <mat-list-item role="header">
+                                    <div class="tb-text tb-head team-col">Team</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">HR/5</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">R/5</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">AVG</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">OBP</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">SLUG</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">OPS</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">ERA</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text tb-head">K5</div><div class="tb-spacer">|</div>
+                                </mat-list-item>
+                                <mat-list-item role="listitem"  *ngFor="let team of si.teams">
+                                    <div class="tb-text team-col">{{team.name}}</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">0.000</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">0.000</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">0.000</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">0.000</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">0.000</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">0.000</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">0.000</div><div class="tb-spacer">|</div>
+                                    <div class="tb-text">0.000</div><div class="tb-spacer">|</div>
+                                </mat-list-item>
+                            </mat-list>
+                        </mat-card>
+
+                </mat-tab>
+
                 </li>
             </ul>
         </mat-tab-group>
