@@ -239,6 +239,7 @@ table {
   .random-button{    
         width: 100px;
         background-color: var(--object-bg-b);
+        background-image: linear-gradient(to bottom right, var(--object-bg-b), rgb(219, 255, 244));
         margin: auto;
   }
   .random-button-longer {

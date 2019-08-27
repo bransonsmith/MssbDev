@@ -11,7 +11,7 @@
                 <div class="roster-instruction" *ngIf="allEmpty(this.leftRoster)">Fill Team With Characters Below!</div>
                 <div class="roster-header" *ngIf="!isFirstSlotCaptain(this.leftRoster)" >The first roster slot must be a captain!</div>
                 <!-- <div class="roster-header" *ngIf="isFirstSlotCaptain(this.leftRoster)" ></div> -->
-                <mat-grid-list cols="1" rowHeight="53px">
+                <mat-grid-list cols="1" rowHeight="58px">
 
                     <mat-grid-tile
                         *ngFor="let character of leftRoster; let i = index"
@@ -58,7 +58,7 @@
                 <div class="roster-instruction" *ngIf="allEmpty(this.rightRoster)">Fill Team With Characters Below!</div>
                 <div class="roster-header" *ngIf="!isFirstSlotCaptain(this.rightRoster)" >The first roster slot must be a captain!</div>
                 <!-- <div class="roster-header" *ngIf="isFirstSlotCaptain(this.leftRoster)" ></div> -->
-                <mat-grid-list cols="1" rowHeight="53px">
+                <mat-grid-list cols="1" rowHeight="58px">
 
                     <mat-grid-tile
                         *ngFor="let character of rightRoster; let i = index"
@@ -108,7 +108,7 @@
 
 
     <div class="unpicked-section">
-        <mat-grid-list cols="4" rowHeight="53px">
+        <mat-grid-list cols="5" rowHeight="58px">
             <mat-grid-tile
                 *ngFor="let character of unpickedCharacters; let i = index"
                 [colspan]=1
