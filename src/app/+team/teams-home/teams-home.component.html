@@ -6,9 +6,16 @@
             </mat-card-title>
         </div>
 
-        <table mat-table [dataSource]="dataSource" matSort class="team-table">
+        <ag-grid-angular 
+            style="width: 100%; height: 500px;" 
+            class="ag-theme-balham"
+            [rowData]="teamInfo" 
+            [columnDefs]="columnDefs"
+            >
+        </ag-grid-angular>
 
-            <!-- 'name', 'number', 'info', 'bat', 'draws' -->
+        <!-- <table mat-table [dataSource]="dataSource" matSort class="team-table">
+
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> name </th>
                 <td mat-cell *matCellDef="let tinfo" (click)="onNameClick(team)" class="clickable-cell"> {{tinfo.team.name}} </td>
@@ -66,7 +73,8 @@
             
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        </table> -->
 
     </mat-card>    
 </div>
+

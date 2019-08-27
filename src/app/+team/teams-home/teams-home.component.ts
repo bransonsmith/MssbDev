@@ -40,6 +40,21 @@ export class TeamsHomeComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
 
+  columnDefs = [
+    {headerName: 'name',    field: 'team.name'   , sortable: true, resizable: true },
+    {headerName: 'W%',  field: 'team.winPct'     , sortable: true, resizable: true, width: 60 },
+    {headerName: 'W',    field: 'team.wins'      , sortable: true, resizable: true, width: 60  },
+    {headerName: 'L',  field: 'team.losses'      , sortable: true, resizable: true, width: 60  },
+    {headerName: 'T',   field: 'team.draws'      , sortable: true, resizable: true, width: 60  },
+    {headerName: 'manager', field: 'manager.name', sortable: true, resizable: true },
+    {headerName: 'season',  field: 'season.name' , sortable: true, resizable: true },
+    {headerName: 'AVG',     field: 'stats.AVG'   , sortable: true, resizable: true, width: 60},
+    {headerName: 'OBP',     field: 'stats.OBP'   , sortable: true, resizable: true, width: 60},
+    {headerName: 'ERA',     field: 'stats.ERA'   , sortable: true, resizable: true, width: 60},
+    {headerName: 'K5',      field: 'stats.K5'    , sortable: true, resizable: true, width: 60}
+  ];
+
+
   constructor(
     private teamService: TeamService,
     private managerService: ManagerService,

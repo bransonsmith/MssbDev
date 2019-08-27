@@ -73,6 +73,8 @@ import { ManagerHomeComponent } from './+manager/manager-home/manager-home.compo
 import { ManagerComponent } from './+manager/manager/manager.component';
 import { SeasonComponent } from './+season/season/season.component';
 
+import { AgGridModule } from 'ag-grid-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -148,7 +150,8 @@ import { SeasonComponent } from './+season/season/season.component';
     ScrollingModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]
