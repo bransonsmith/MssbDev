@@ -25,7 +25,7 @@
 
 .ribbon {    
     background-color: var(--secondary-color);
-    background-image: linear-gradient(rgb(128, 128, 128), var(--secondary-color));
+    background-image: linear-gradient(rgb(117, 117, 117), var(--secondary-color));
     padding: 0px, 0px, 10px, 0px;
     margin: 0px, 0px, 10px, 0px;
     color: var(--accent-color);
