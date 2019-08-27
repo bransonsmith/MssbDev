@@ -1,0 +1,50 @@
+.container {
+    min-height: 800px;
+    margin: auto;
+    background-color: var(--main-bg);
+}
+
+.main-line {
+    font-size: 50px;
+    color: var(--accent-color);
+    font-weight: 900;
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.current-features {
+    width: 60%;
+    margin: 100px auto;
+    background-image: linear-gradient(var(--secondary-color), rgb(93, 93, 93));
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.feature-line {
+    font-size: 30px;
+    text-align: center;
+    color: var(--accent-color);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.feature-list {
+    margin: 50px auto;
+}
+
+.feature-item {
+    font-size: 18px;
+    text-align: center;
+    color: rgb(223, 223, 223);
+    text-decoration: none;
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.feedback-line {
+    margin: 100px auto;
+    font-size: 24px;
+    text-align: center;
+    color: var(--secondary-color);
+}
