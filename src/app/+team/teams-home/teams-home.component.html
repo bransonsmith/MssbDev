@@ -8,31 +8,60 @@
 
         <table mat-table [dataSource]="dataSource" matSort class="team-table">
 
-
             <!-- 'name', 'number', 'info', 'bat', 'draws' -->
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> name </th>
-                <td mat-cell *matCellDef="let team" (click)="onNameClick(team)" class="clickable-cell"> {{team.name}} </td>
+                <td mat-cell *matCellDef="let tinfo" (click)="onNameClick(team)" class="clickable-cell"> {{tinfo.team.name}} </td>
             </ng-container>
 
             <ng-container matColumnDef="winPct">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> W% </th>
-                <td mat-cell *matCellDef="let team"> {{team.winPct}} </td>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.team.winPct}} </td>
             </ng-container>
 
             <ng-container matColumnDef="wins">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> W </th>
-                <td mat-cell *matCellDef="let team"> {{team.wins}} </td>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.team.wins}} </td>
             </ng-container>
             
             <ng-container matColumnDef="losses">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> L </th>
-                <td mat-cell *matCellDef="let team"> {{team.losses}} </td>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.team.losses}} </td>
             </ng-container>
 
             <ng-container matColumnDef="draws">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> D </th>
-                <td mat-cell *matCellDef="let team"> {{team.draws}} </td>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.team.draws}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="manager">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> manager </th>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.manager.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="season">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> season </th>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.season.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="AVG">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> AVG </th>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.stats.AVG}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="OBP">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> OBP </th>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.stats.OBP}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ERA">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ERA </th>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.stats.ERA}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="K5">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> K5 </th>
+                <td mat-cell *matCellDef="let tinfo"> {{tinfo.stats.K5}} </td>
             </ng-container>
             
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -6,11 +6,24 @@
 
 .cr-text {
     font-size: 10px;
+    width: 80%;
+    margin: auto;
 }
 
 .ribbon {
+  margin: auto;
 }
 
 .footer {
     max-width: var(--headfoot-width);
+    margin: auto;
 }
+
+.row {
+  margin: auto;
+}
+
+.link-row {
+  margin: auto;
+}
+

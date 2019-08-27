@@ -1,5 +1,5 @@
 .teams-card {
-    box-shadow: 0; 
+    box-shadow: none; 
     min-height: 1000px;
     background-color: var(--container-bg); 
 }

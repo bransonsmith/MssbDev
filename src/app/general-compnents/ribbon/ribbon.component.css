@@ -8,6 +8,7 @@
 .home-button {
     margin-right: 8px;
     background-color: var(--secondary-color);
+    /* background-color: rgb(230, 230, 230); */
     font: bold;
     font-size: 26px;
 }
@@ -29,7 +30,7 @@
     padding: 0px, 0px, 10px, 0px;
     margin: 0px, 0px, 10px, 0px;
     color: var(--accent-color);
-    box-shadow: var(--thin-shadow);
+    /* box-shadow: var(--thin-shadow); */
 }
 
 .ribbon-font {

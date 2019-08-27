@@ -11,7 +11,7 @@
 
 .character-rect {
     display: flex;
-    background-color: var(--object-color);
+    background-color: var(--object-bg);
     color: var(--object-text-color);
     width: 160px;
     height: 40px;
@@ -23,9 +23,9 @@
     margin: 12px;
 }
 .character-rect:hover {
-    background-color: var(--object-color-brighter);
+    background-color: var(--object-bg-b);
     box-shadow: var(--card-shadow);
-    border-color: rgb(255, 47, 92);
+    border-color: var(--accent-color);
     border-width: 3px;
     border-style: solid;
 }
@@ -42,7 +42,7 @@
     border-radius: 8px;
     margin: 12px;
 
-    background-color: var(--object-color-brighter);
+    background-color: var(--object-bg-b);
     box-shadow: var(--card-shadow);
     border-color: var(--primary-color);
     border-width: 3px;
@@ -236,13 +236,10 @@ table {
   .rosters-section {
       display: flex;
   } */
-  .random-button{
-
-        margin: auto;        
-        margin-top: 5px;
-        margin-bottom: 5px;
+  .random-button{    
         width: 100px;
-        background-color: var(--object-color-brighter);
+        background-color: var(--object-bg-b);
+        margin: auto;
   }
   .random-button-longer {
         width: 180px;
@@ -250,8 +247,13 @@ table {
 
   .roster-col-options {
         display: flex;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        width: 100%;
+        margin: auto;
+  }
+  .roster-col-option-buttons-row {
+        width: 100%;
+        display: flex;
+        margin: 20px;
   }
 
   .team-picker {
