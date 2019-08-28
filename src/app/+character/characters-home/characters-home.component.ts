@@ -20,6 +20,7 @@ import { PlayerInstanceService } from 'src/app/services/player-instance.service'
 export class PlayerStats {
   player: Character;
   stats: StatCollection;
+  shortName: string;
 }
 
 @Component({
@@ -48,6 +49,29 @@ export class CharactersHomeComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
    displayedColumns: string[] = ['Player', 'PA', 'AB', 'H', 'DB', 'TB', 'HR', 'R', 'RBI', 'SO', 'AVG', 'OBP', 'SLUG', 'OPS', 'BBFC', 'IP', 'ER', 'K', 'ERA', 'K5'];
 
+   columnDefs = [
+    {headerName: 'name', field: 'shortName'   , sortable: true, resizable: true },
+    {headerName: 'PA',   field: 'stats.PA' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'AB',   field: 'stats.AB'   , sortable: true, resizable: true, width: 60  },
+    {headerName: 'H',    field: 'stats.H' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'DB',   field: 'stats.DB'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'TB',   field: 'stats.TB' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'HR',   field: 'stats.HR'   , sortable: true, resizable: true, width: 60  },
+    {headerName: 'R',    field: 'stats.R' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'RBI',  field: 'stats.RBI'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'SO',   field: 'stats.SO' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'AVG',  field: 'stats.AVG'   , sortable: true, resizable: true, width: 60  },
+    {headerName: 'OBP',  field: 'stats.OBP' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'SLUG', field: 'stats.SLUG'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'OPS',  field: 'stats.OPS' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'BBFC', field: 'stats.BBFC'   , sortable: true, resizable: true, width: 60  },
+    {headerName: 'IP',   field: 'stats.IP' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'ER',   field: 'stats.ER'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'K',    field: 'stats.K' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'ERA',  field: 'stats.ERA'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'K5',   field: 'stats.K5'  , sortable: true, resizable: true, width: 60  },
+  ];
+
   dataSource =  new MatTableDataSource([]);
 
   private sub: any;
@@ -62,7 +86,6 @@ export class CharactersHomeComponent implements OnInit {
 
   ngOnInit() {
     this.fetchCharacterData();
-    
 
   }
 
@@ -99,7 +122,10 @@ export class CharactersHomeComponent implements OnInit {
               statCollections.forEach(sc => {
 
                 this.stats.push(sc);
-                const pStats: PlayerStats = { player: c, stats: sc };
+
+                const sn = this.getShortenedCharacterName(c);
+
+                const pStats: PlayerStats = { player: c, stats: sc, shortName: sn };
                 this.playerStats.push(pStats);
 
               });

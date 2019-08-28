@@ -8,12 +8,17 @@
     color: var(--object-fancy-text-color);
     font: bold;
     font-size: 28px;
-    margin: 0 25px;
+    margin: 25px 25px 0px;
 }
 
 .title-row {
     display: flex;
 } 
+
+.stat-table {
+    margin-top: 25px;
+}
+
 /* 
 .char-tile {
 

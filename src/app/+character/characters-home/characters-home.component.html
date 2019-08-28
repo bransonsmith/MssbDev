@@ -65,7 +65,15 @@
             Character Stats
         </div>
 
-        <table mat-table [dataSource]="playerStats" matSort matSortActive="PA" matSortDisableClear matSortDirection="desc" class="stats-table">
+        <ag-grid-angular 
+            style="width: 100%; height: 500px;" 
+            class="ag-theme-balham stat-table"
+            [rowData]="playerStats" 
+            [columnDefs]="columnDefs"
+        >
+        </ag-grid-angular>
+
+        <!-- <table mat-table [dataSource]="playerStats" matSort matSortActive="PA" matSortDisableClear matSortDirection="desc" class="stats-table">
 
             <ng-container matColumnDef="Player">
                 <th mat-header-cell *matHeaderCellDef> Character Name </th>
@@ -157,28 +165,6 @@
                 <td mat-footer-cell *matFooterCellDef> {{getColumnAvg('BBFC')}} </td>
             </ng-container>
 
-            <!-- <ng-container matColumnDef="SB">
-                <th mat-header-cell *matHeaderCellDef> SB </th>
-                <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.SB}}</div> </td>
-                <td mat-footer-cell *matFooterCellDef> {{getColumnAvg('SB')}} </td>
-            </ng-container> -->
-            
-
-            
-            <!-- <ng-container matColumnDef="W">
-                <th mat-header-cell *matHeaderCellDef> W </th>
-                <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.W}}</div> </td>
-                <td mat-footer-cell *matFooterCellDef> {{getColumnAvg('W')}} </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="L">
-                <th mat-header-cell *matHeaderCellDef> L </th>
-                <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.L}}</div> </td>
-                <td mat-footer-cell *matFooterCellDef> {{getColumnAvg('L')}} </td>
-            </ng-container> -->
-            
-
-
             <ng-container matColumnDef="IP">
                 <th mat-header-cell *matHeaderCellDef> IP </th>
                 <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.IP}}</div> </td>
@@ -212,7 +198,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-        </table>
+        </table> -->
 
     <!-- displayedColumns: string[] = ['PA', 'AB', 'H', 'DB', 'TB', 'HR', 'R', 'RBI', 'SO', 'BBFC', 'SB', 'IP', 'ER', 'K', 'W', 'L', 'AVG', 'OBP', 'SLUG', 'OPS', 'ERA', 'K5']; -->
 
