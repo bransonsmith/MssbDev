@@ -21,6 +21,10 @@ export class TeamService {
     return of(TEAMS.find(team => team.name === name));
   }
 
+  getTeamById(id: string): Observable<Team> {
+    return of(TEAMS.find(team => team.id === id));
+  }
+
   getTeamsForSeason(id: string): Observable<Team[]> {
     return of(TEAMS.filter(team => team.seasonId === id));
   }

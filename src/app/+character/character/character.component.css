@@ -2,6 +2,7 @@ table {
     width: 100%;
 }
 
+
 .details-card {
     box-shadow: var(--card-shadow);
     min-height: 1000px;
@@ -19,6 +20,7 @@ table {
 .basic-detail-section {
     display: flex;
     height: 350px;
+    justify-content: center;
 }
 
 .section-card {
