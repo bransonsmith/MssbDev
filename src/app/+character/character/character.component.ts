@@ -14,6 +14,7 @@ import { Manager } from 'src/app/models/manager';
 import { TeamService } from 'src/app/services/team.service';
 import { SeasonService } from 'src/app/services/season.service';
 import { ManagerService } from 'src/app/services/manager.service';
+import { GridOptions } from 'ag-grid-community';
 
 export class CharacterStatInfo {
 
@@ -34,6 +35,7 @@ export class CharacterComponent implements OnInit {
   stats: StatCollection[];
 
   charStatInfos: CharacterStatInfo[];
+  gridOptions: GridOptions;
 
   // displayedColumns: string[] = ['PA', 'AB', 'H', 'DB', 'TB', 'HR', 'R', 'RBI', 'SO', 'BBFC', 'SB', 'IP', 'ER', 'K', 'W', 'L', 'AVG', 'OBP', 'SLUG', 'OPS', 'ERA', 'K5'];
   // displayedColumns: string[] = ['PA', 'AB', 'H', 'DB', 'TB',];
@@ -86,7 +88,19 @@ export class CharacterComponent implements OnInit {
     private seasonService: SeasonService,
     private managerService: ManagerService,
 
-  ) { }
+  ) {
+
+    this.gridOptions = {
+      rowData: this.charStatInfos,
+      columnDefs: this.columnDefs,
+
+      onCellClicked(event) {
+        if (event.colDef.field === 'teamName') {
+          router.navigateByUrl('teams/' + event.value);
+        }
+      }
+    };
+  }
 
   ngOnInit() {
     this.fetchCharacter();

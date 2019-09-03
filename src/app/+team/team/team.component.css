@@ -96,6 +96,7 @@ th.mat-header-cell {
     height: fit-content;
     background-color: var(--object-color-brighter);
     margin-bottom: 12px;
+    background-color: var(--primary-color);
 }
 
 
@@ -111,7 +112,7 @@ th.mat-header-cell {
 .header-name {
     font-size: 16px;
     text-align: center;
-    color: var(--object-text-color);
+    color: var(--object-bg);
     margin: auto;
     margin-right: 6px;
     margin-left: 10px;

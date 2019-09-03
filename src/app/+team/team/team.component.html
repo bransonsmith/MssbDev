@@ -1,7 +1,7 @@
 <div *ngIf="team">
     <mat-card class="team-card">
 
-        <div class="basic-detail-section section-card-">
+        <div class="basic-detail-section section-card">
             
             <mat-card class="section-card image-card">
                 <mat-card-title>
@@ -54,7 +54,16 @@
 
         <!-- displayedColumns: string[] = ['PA', 'AB', 'H', 'DB', 'TB', 'HR', 'R', 'RBI', 'SO', 'BBFC', 'SB', 'IP', 'ER', 'K', 'W', 'L', 'AVG', 'OBP', 'SLUG', 'OPS', 'ERA', 'K5']; -->
 
-        <div class="performance-section">
+        <ag-grid-angular 
+        style="width: 100%; height: 380px;" 
+        class="ag-theme-balham"
+        [rowData]="playerStats" 
+        [columnDefs]="columnDefs"
+        [gridOptions]="gridOptions"
+        >
+        </ag-grid-angular>
+
+        <!-- <div class="performance-section">
             <mat-card class="table-card section-card">
                 <mat-card-title>Team Stats</mat-card-title>
                 <table mat-table [dataSource]="playerStats" matSort matSortActive="PA" matSortDisableClear matSortDirection="desc" class="year-table">
@@ -149,28 +158,6 @@
                         <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('BBFC')}} </td>
                     </ng-container>
 
-                    <!-- <ng-container matColumnDef="SB">
-                        <th mat-header-cell *matHeaderCellDef> SB </th>
-                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.SB}}</div> </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('SB')}} </td>
-                    </ng-container> -->
-                    
- 
-                    
-                    <!-- <ng-container matColumnDef="W">
-                        <th mat-header-cell *matHeaderCellDef> W </th>
-                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.W}}</div> </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('W')}} </td>
-                    </ng-container>
-                    
-                    <ng-container matColumnDef="L">
-                        <th mat-header-cell *matHeaderCellDef> L </th>
-                        <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.L}}</div> </td>
-                        <td mat-footer-cell *matFooterCellDef> {{getColumnTotal('L')}} </td>
-                    </ng-container> -->
-                    
- 
-
                     <ng-container matColumnDef="IP">
                         <th mat-header-cell *matHeaderCellDef> IP </th>
                         <td mat-cell *matCellDef="let element"> <div class="table-font">{{element.stats.IP}}</div> </td>
@@ -206,10 +193,8 @@
                     <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
                 </table>
 
-        <!-- displayedColumns: string[] = ['PA', 'AB', 'H', 'DB', 'TB', 'HR', 'R', 'RBI', 'SO', 'BBFC', 'SB', 'IP', 'ER', 'K', 'W', 'L', 'AVG', 'OBP', 'SLUG', 'OPS', 'ERA', 'K5']; -->
-
             </mat-card>
-        </div>
+        </div> -->
 
     </mat-card>    
 </div>

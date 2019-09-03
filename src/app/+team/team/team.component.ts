@@ -18,6 +18,7 @@ import { SeasonService } from 'src/app/services/season.service';
 import { ManagerService } from 'src/app/services/manager.service';
 import { CharacterService } from 'src/app/services/character.service';
 import { Character } from 'src/app/models/character';
+import { GridOptions } from 'ag-grid-community';
 
 export class PlayerStats {
   player: Character;
@@ -45,6 +46,32 @@ export class TeamComponent implements OnInit {
   // displayedColumns: string[] = ['Player', 'PA', 'AB', 'H', 'DB', 'TB', 'HR', 'R', 'RBI', 'SO', 'BBFC', 'SB', 'IP', 'ER', 'K', 'W', 'L', 'AVG', 'OBP', 'SLUG', 'OPS', 'ERA', 'K5'];
   // tslint:disable-next-line:max-line-length
    displayedColumns: string[] = ['Player', 'PA', 'AB', 'H', 'DB', 'TB', 'HR', 'R', 'RBI', 'SO', 'AVG', 'OBP', 'SLUG', 'OPS', 'BBFC', 'IP', 'ER', 'K', 'ERA', 'K5'];
+   gridOptions: GridOptions;
+   columnDefs = [
+    {headerName: 'name',    field: 'player.name'   , sortable: true, resizable: true },
+    {headerName: 'PA',  field: 'stats.PA'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'AB',  field: 'stats.AB'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'H',  field: 'stats.H'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'DB',  field: 'stats.DB'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'TB',  field: 'stats.TB'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'HR',  field: 'stats.HR'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'R',  field: 'stats.R'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'RBI',  field: 'stats.RBI'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'SO',  field: 'stats.SO'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'BBFC',  field: 'stats.BBFC'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'SB',  field: 'stats.SB'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'IP',  field: 'stats.IP'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'ER',  field: 'stats.ER'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'K',  field: 'stats.K'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'W',  field: 'stats.W'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'L',  field: 'stats.L'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'AVG',  field: 'stats.AVG'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'OBP',  field: 'stats.OBP'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'SLUG',  field: 'stats.SLUG'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'OPS',  field: 'stats.OPS'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'ERA',  field: 'stats.ERA'	, sortable: true, resizable: true, width: 60 },
+    {headerName: 'K5',  field: 'stats.K5'	, sortable: true, resizable: true, width: 60 },
+  ];
 
   dataSource =  new MatTableDataSource([]);
 
@@ -56,7 +83,7 @@ export class TeamComponent implements OnInit {
     outOf: '72',
     symbolImgPath: '../../assets/images/analytic-blocks/batting.png',
     value: 'tbd'
-  }
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -67,7 +94,20 @@ export class TeamComponent implements OnInit {
     private managerService: ManagerService,
     private seasonService: SeasonService,
     private characterService: CharacterService,
-  ) { }
+  ) {
+
+    this.gridOptions = {
+      rowData: this.playerStats,
+      columnDefs: this.columnDefs,
+
+      onCellClicked(event) {
+        if (event.colDef.field === 'player.name') {
+          router.navigateByUrl('characters/' + event.value);
+        }
+      }
+    };
+
+  }
 
   ngOnInit() {
     this.fetchTeam();

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { Manager } from 'src/app/models/manager';
 import { Season } from 'src/app/models/season';
 import { StatCollection } from 'src/app/models/stat-collection';
+import { GridOptions } from 'ag-grid-community';
 
 export class TeamInfo {
 
@@ -28,7 +29,7 @@ export class TeamInfo {
 })
 export class TeamsHomeComponent implements OnInit {
 
-  title: string = 'Teams';
+  title = 'Teams';
 
 
   teamInfo: TeamInfo[];
@@ -54,6 +55,7 @@ export class TeamsHomeComponent implements OnInit {
     {headerName: 'K5',      field: 'stats.K5'    , sortable: true, resizable: true, width: 60}
   ];
 
+  gridOptions: GridOptions;
 
   constructor(
     private teamService: TeamService,
@@ -61,7 +63,19 @@ export class TeamsHomeComponent implements OnInit {
     private seasonService: SeasonService,
     private statCollectionService: StatCollectionService,
     private router: Router,
-  ) { }
+  ) {
+    this.gridOptions = {
+      rowData: this.teamInfo,
+      columnDefs: this.columnDefs,
+
+      onCellClicked(event) {
+        if (event.colDef.field === 'team.name') {
+          router.navigateByUrl('teams/' + event.value);
+        }
+      }
+    };
+
+  }
 
   ngOnInit() {
 
@@ -81,7 +95,7 @@ export class TeamsHomeComponent implements OnInit {
                   this.statCollectionService.getEntStatCollections(t.id).subscribe(
                     (sc) => {
 
-                      let tInfo: TeamInfo = {
+                      const tInfo: TeamInfo = {
                         team: t,
                         manager: m,
                         season: s,
@@ -101,14 +115,11 @@ export class TeamsHomeComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.teamInfo);
         this.dataSource.sort = this.sort;
       });
-  }
-
-  hdName() {
 
   }
 
-  onNameClick(team: Team) {
-    this.router.navigateByUrl('teams/' + team.name);
+  onNameCellClick(teamName: string) {
+    this.router.navigateByUrl('teams/' + teamName);
   }
 
 }
