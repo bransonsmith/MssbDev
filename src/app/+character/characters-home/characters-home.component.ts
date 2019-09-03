@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 import { AnalyticBlock } from '../../models/analytic-block';
 import { PlayerInstance } from 'src/app/models/player-instance';
 import { PlayerInstanceService } from 'src/app/services/player-instance.service';
+import { GridOptions } from 'ag-grid-community';
 
 export class PlayerStats {
   player: Character;
@@ -37,6 +38,9 @@ export class CharactersHomeComponent implements OnInit {
   playerInstances: PlayerInstance[];
   stats: StatCollection[];
   playerStats: PlayerStats[];
+  playerRatings: Character[];
+  gridOptions: GridOptions;
+  gridOptionsRatings: GridOptions;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
@@ -72,6 +76,31 @@ export class CharactersHomeComponent implements OnInit {
     {headerName: 'K5',   field: 'stats.K5'  , sortable: true, resizable: true, width: 60  },
   ];
 
+  columnDefsRatings = [
+    {headerName: 'name',   field: 'name' , sortable: true, resizable: true },
+    {headerName: 'bat',   field: 'bat' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'field',   field: 'field' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'run',   field: 'run' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'pitch',   field: 'pitch' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'lean',   field: 'lean' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'zone',   field: 'zone' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'agility',   field: 'agility' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'coverage',   field: 'coverage' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'reachOut',   field: 'reachOut' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'reachIn',   field: 'reachIn' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'dive',   field: 'dive' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'size',   field: 'size' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'arm',   field: 'arm' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'jump',   field: 'jump' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'chemistry',   field: 'chemistry' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'stamina',   field: 'stamina' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'curve',   field: 'curve' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'velocity',   field: 'velocity' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'chargeVelocity',   field: 'chargeVelocity' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'changeUp',   field: 'changeUp' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'isCaptain',   field: 'isCaptain' , sortable: true, resizable: true, width: 60 },
+  ];
+
   dataSource =  new MatTableDataSource([]);
 
   private sub: any;
@@ -82,7 +111,30 @@ export class CharactersHomeComponent implements OnInit {
     private characterService: CharacterService,
     private statCollectionService: StatCollectionService,
     private playerInstanceService: PlayerInstanceService,
-  ) { }
+  ) {
+
+    this.gridOptions = {
+      rowData: this.playerStats,
+      columnDefs: this.columnDefs,
+
+      onCellClicked(event) {
+        console.log(event);
+        if (event.colDef.field === 'shortName') {
+          router.navigateByUrl('characters/' + event.data.player.name);
+        }
+      }
+    };
+    this.gridOptionsRatings = {
+      rowData: this.playerRatings,
+      columnDefs: this.columnDefsRatings,
+
+      onCellClicked(event) {
+        if (event.colDef.field === 'name') {
+          router.navigateByUrl('characters/' + event.value);
+        }
+      }
+    };
+  }
 
   ngOnInit() {
     this.fetchCharacterData();
@@ -98,6 +150,7 @@ export class CharactersHomeComponent implements OnInit {
     this.columnNum = Math.trunc(width / this.tileSize);
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngAfterViewInit() {
     this.setColNum();
   }
@@ -132,7 +185,7 @@ export class CharactersHomeComponent implements OnInit {
             }
           );
         });
-
+        this.playerRatings = this.characters;
         this.setColNum();
         this.dataSource = new MatTableDataSource(this.playerStats);
         this.dataSource.sort = this.sort;

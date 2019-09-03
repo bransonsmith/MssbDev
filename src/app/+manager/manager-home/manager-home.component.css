@@ -21,3 +21,14 @@
 .team-col {
     width: 150px;
 }
+
+.title {
+    color: var(--object-fancy-text-color);
+    font: bold;
+    font-size: 28px;
+    margin: 25px 25px 0px;
+}
+
+.title-row {
+    display: flex;
+} 
