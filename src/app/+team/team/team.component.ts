@@ -229,7 +229,7 @@ export class TeamComponent implements OnInit {
   fetchTeam() {
 
     this.route.params.subscribe(params => {
-      const name = params['name'];
+      const name = params.name;
       this.stats = [];
       this.playerStats = [];
       console.log('Need to find team: ' + name);
