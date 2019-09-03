@@ -71,9 +71,9 @@ export class CharacterComponent implements OnInit {
   private sub: any;
 
   analyticBlock1: AnalyticBlock = {
-    name: 'HR per AB',
+    name: 'Key Stat',
     rank: '1',
-    outOf: '72',
+    outOf: 'TBD',
     symbolImgPath: '../../assets/images/analytic-blocks/batting.png',
     value: 'tbd'
   };
