@@ -129,6 +129,10 @@ export class ManagerHomeComponent implements OnInit {
 
   }
 
+  teamClick(teamName: string) {
+    this.router.navigateByUrl('teams/' + teamName);
+  }
+
   onNameClick(manager: Manager) {
     this.router.navigateByUrl('managers/' + manager.name);
   }

@@ -9,11 +9,12 @@ import { Team } from 'src/app/models/team';
 import { StatCollection } from 'src/app/models/stat-collection';
 import { TeamService } from 'src/app/services/team.service';
 import { StatCollectionService } from 'src/app/services/stat-collection.service';
+import { GridOptions } from 'ag-grid-community';
 
 export class SeasonInfo {
   season: Season;
   teams: Team[];
-  // stats: StatCollection;
+  stats: StatCollection;
 }
 
 @Component({
@@ -23,7 +24,7 @@ export class SeasonInfo {
 })
 export class SeasonHomeComponent implements OnInit {
 
-  title: string = 'Seasons';
+  title = 'Seasons';
 
   seasons: Season[];
   seasonInfo: SeasonInfo[];
@@ -33,13 +34,49 @@ export class SeasonHomeComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
+  gridOptions: GridOptions;
+
+  columnDefs = [
+    {headerName: 'name', field: 'season.name'   , sortable: true, resizable: true },
+    {headerName: 'PA',   field: 'stats.PA' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'AB',   field: 'stats.AB'   , sortable: true, resizable: true, width: 60  },
+    {headerName: 'H',    field: 'stats.H' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'DB',   field: 'stats.DB'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'TB',   field: 'stats.TB' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'HR',   field: 'stats.HR'   , sortable: true, resizable: true, width: 60  },
+    {headerName: 'R',    field: 'stats.R' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'RBI',  field: 'stats.RBI'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'SO',   field: 'stats.SO' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'AVG',  field: 'stats.AVG'   , sortable: true, resizable: true, width: 60  },
+    {headerName: 'OBP',  field: 'stats.OBP' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'SLUG', field: 'stats.SLUG'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'OPS',  field: 'stats.OPS' , sortable: true, resizable: true, width: 60 },
+    {headerName: 'BBFC', field: 'stats.BBFC'   , sortable: true, resizable: true, width: 60  },
+    {headerName: 'IP',   field: 'stats.IP' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'ER',   field: 'stats.ER'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'K',    field: 'stats.K' , sortable: true, resizable: true, width: 60  },
+    {headerName: 'ERA',  field: 'stats.ERA'  , sortable: true, resizable: true, width: 60  },
+    {headerName: 'K5',   field: 'stats.K5'  , sortable: true, resizable: true, width: 60  },
+  ];
 
   constructor(
     private teamService: TeamService,
     private statCollectionService: StatCollectionService,
     private seasonService: SeasonService,
     private router: Router,
-  ) { }
+  ) {
+    this.gridOptions = {
+      rowData: this.seasonInfo,
+      columnDefs: this.columnDefs,
+
+      onCellClicked(event) {
+        console.log(event);
+        if (event.colDef.field === 'season.name') {
+          router.navigateByUrl('seasons/' + event.data.season.name);
+        }
+      }
+    };
+   }
 
   ngOnInit() {
 
@@ -50,10 +87,15 @@ export class SeasonHomeComponent implements OnInit {
         this.seasons = gottenSeasons;
 
         this.seasons.forEach(s => {
-          this.teamService.getTeamsForSeason(s.id).subscribe(
-            (ts) => {
-              const sInfo: SeasonInfo = { season: s, teams: ts };
-              this.seasonInfo.push(sInfo);
+
+          this.statCollectionService.getEntStatCollections(s.id).subscribe(
+            (seaStats) => {
+              this.teamService.getTeamsForSeason(s.id).subscribe(
+                (ts) => {
+                  const sInfo: SeasonInfo = { season: s, teams: ts, stats: seaStats[0] };
+                  this.seasonInfo.push(sInfo);
+                }
+              );
             }
           );
         });

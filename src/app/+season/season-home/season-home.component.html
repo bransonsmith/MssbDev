@@ -1,6 +1,15 @@
 <div [hidden]=false>
     <mat-card class="seasons-card">
     
+        <ag-grid-angular 
+        style="width: 100%; height: 300px;" 
+        class="ag-theme-balham stat-table"
+        [rowData]="seasonInfo" 
+        [columnDefs]="columnDefs"
+        [gridOptions]="gridOptions"
+        >
+        </ag-grid-angular>
+
         <mat-tab-group class="tabs">
             <ul>
                 <li *ngFor="let si of seasonInfo">

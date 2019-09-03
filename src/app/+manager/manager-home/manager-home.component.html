@@ -30,7 +30,7 @@
                                         <div class="tb-text tb-head">D</div><div class="tb-spacer">|</div>
                                     </mat-list-item>
                                     <mat-list-item role="listitem"  *ngFor="let team of si.teams">
-                                        <div class="tb-text team-col">{{team.name}}</div><div class="tb-spacer">|</div>
+                                        <div class="tb-text team-col"><div class="clickable" (click)='teamClick(team.name)'>{{team.name}}</div></div><div class="tb-spacer">|</div>
                                         <div class="tb-text">{{team.winPct}}</div><div class="tb-spacer">|</div>
                                         <div class="tb-text">{{team.wins}}</div><div class="tb-spacer">|</div>
                                         <div class="tb-text">{{team.losses}}</div><div class="tb-spacer">|</div>

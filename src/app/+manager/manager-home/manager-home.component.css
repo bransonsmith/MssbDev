@@ -10,6 +10,8 @@
     font-size: 13px;
     text-align: center;
     width: 100px;
+    z-index: 5;
+
 }
 
 .tb-head {
@@ -20,7 +22,10 @@
 
 .team-col {
     width: 150px;
+    z-index: 5;
+   
 }
+
 
 .title {
     color: var(--object-fancy-text-color);
@@ -32,3 +37,17 @@
 .title-row {
     display: flex;
 } 
+
+.mat-list-item {
+    z-index: 5;
+}
+
+.clickable {
+    text-decoration: underline;
+    z-index: 10;
+}
+.clickable :hover {
+    cursor: pointer !important;
+    z-index: 10;
+    background-color: rgb(177, 255, 236);
+}
