@@ -14,6 +14,7 @@ import { SeasonComponent } from './+season/season/season.component';
 import { SeasonHomeComponent } from './+season/season-home/season-home.component';
 import { ManagerHomeComponent } from './+manager/manager-home/manager-home.component';
 import { ManagerComponent } from './+manager/manager/manager.component';
+import { DraftComponent } from './+draft/draft/draft.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'managers', component: ManagerHomeComponent },
   { path: 'seasons', component: SeasonHomeComponent },
   { path: 'teams', component: TeamsHomeComponent },
+  { path: 'draft', component: DraftComponent },
 
   { path: 'collections', component: CollectionsComponent },
   { path: 'matchUp', component: MatchUpComponent },

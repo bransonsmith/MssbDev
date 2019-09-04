@@ -74,6 +74,7 @@ import { ManagerComponent } from './+manager/manager/manager.component';
 import { SeasonComponent } from './+season/season/season.component';
 
 import { AgGridModule } from 'ag-grid-angular';
+import { DraftComponent } from './+draft/draft/draft.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { AgGridModule } from 'ag-grid-angular';
     ManagerHomeComponent,
     ManagerComponent,
     SeasonComponent,
+    DraftComponent,
   ],
   imports: [
     BrowserModule,
