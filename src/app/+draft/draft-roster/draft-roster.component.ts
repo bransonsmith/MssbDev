@@ -12,30 +12,28 @@ import { EMPTY_CHARACTER } from 'src/app/mock-data/empty-character';
 export class DraftRosterComponent implements OnInit {
 
   @Input() draftRoster: DraftRoster;
-  characters: Character[];
 
   constructor(
     private characterService: CharacterService
   ) { }
 
   ngOnInit() {
-    this.characters = [];
-    if (this.draftRoster.players == null) {
-      this.draftRoster.players = [];
+    if (this.draftRoster.characters == null) {
+      this.draftRoster.characters = [];
     }
     if (this.draftRoster.name == null) {
       this.draftRoster.name = 'none';
     }
-    this.draftRoster.players.forEach(player => {
+    this.draftRoster.characters.forEach(character => {
       try {
-        const c = this.characterService.getCharacterByName(player);
-        this.characters.push(c);
+        const c = this.characterService.getCharacterByName(character.name);
+        this.draftRoster.characters.push(c);
       } catch (error) {
-        this.characters.push(EMPTY_CHARACTER);
+        this.draftRoster.characters.push(EMPTY_CHARACTER);
       }
     });
-    while (this.characters.length < 9) {
-      this.characters.push(EMPTY_CHARACTER);
+    while (this.draftRoster.characters.length < 9) {
+      this.draftRoster.characters.push(EMPTY_CHARACTER);
     }
   }
 

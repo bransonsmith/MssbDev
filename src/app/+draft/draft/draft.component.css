@@ -1,3 +1,43 @@
+.current-pick-card {
+    align-content: center;
+}
+
+.count-down {
+    background-color: var(--primary-color);
+    margin: auto;
+    margin-bottom: 12px;
+    width: fit-content;
+}
+
+.time {
+    color: var(--alt-contrast-primary-color);
+    font-size: 70px;
+    margin: auto;
+    padding: 5px;
+}
+
+.picker-name {
+    color: var(--accent-color);
+    font-size: 30px;
+    margin: auto;
+    margin-bottom: 12px;
+}
+
+.on-the-clock {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.pick-button {
+    background-color: var(--accent-color);
+    font-size: 50px;
+    color: var(--accent-color-d);
+    height: 45px;
+    margin: auto;
+    margin-bottom: 12px;
+}
+
 .names {
     display: inline;
 }

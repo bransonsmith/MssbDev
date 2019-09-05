@@ -1,3 +1,4 @@
+
 .character-rect {
     display: flex;
     background-color: var(--object-bg);
@@ -9,6 +10,10 @@
     font-size: 8px;
     cursor: pointer;
     padding: 1px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: var(--object-bg);
+
     /* border-radius: 8px; */
 }
 .character-rect:hover {

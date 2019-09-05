@@ -77,8 +77,17 @@
         <div class="basic-detail-section section-card">
         
             <mat-card class="current-pick-card section-card">
-                    {{currentPicker}}, YOU ARE ON THE CLOCK
+                <div class="picker-name">
+                    {{currentPicker.name}}
+                </div> 
+                <div class="on-the-clock">
+                    YOU ARE ON THE CLOCK
+                </div>   
+                <div class="count-down">
+                    <div class="time">{{seconds}}</div>
+                </div>
     
+                <button mat-button class="pick-button" (click)="pick()">Pick</button>
             </mat-card>
 
             <mat-card class="section-card image-card">

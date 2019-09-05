@@ -2,7 +2,7 @@
 <mat-card class="card">
     <span class="name">{{draftRoster.name}}</span>
     <ul class="roster">
-        <li *ngFor="let character of characters" class="player">
+        <li *ngFor="let character of draftRoster.characters" class="player">
             <app-draft-tile [character]="character"></app-draft-tile>
         </li>
     </ul>
