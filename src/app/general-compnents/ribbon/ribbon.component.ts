@@ -45,4 +45,7 @@ export class RibbonComponent implements OnInit {
     this.router.navigateByUrl('seasons');
   }
 
+  handleDraftClick(event: Event) {
+    this.router.navigateByUrl('draft');
+  }
 }

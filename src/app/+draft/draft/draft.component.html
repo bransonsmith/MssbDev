@@ -1,48 +1,211 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-<mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-    <ng-template matStepLabel>How Many Teams?</ng-template>
-    <mat-form-field>
-            <!-- <mat-form-field> -->
-        <mat-label>How Many Teams?</mat-label>
-        <mat-select>
-        <mat-option [value]="2">2</mat-option>
-        <mat-option [value]="3">3</mat-option>
-        <mat-option [value]="4">4</mat-option>
-        <mat-option [value]="5">5</mat-option>
-        <mat-option [value]="6">6</mat-option>
-        <mat-option [value]="7">7</mat-option>
-        <mat-option [value]="8">8</mat-option>
-        </mat-select>
-            <!-- </mat-form-field> -->
-        <!-- <input matInput placeholder="How Many Teams?" formControlName="firstCtrl" required> -->
-    </mat-form-field>
-    <div>
-        <button mat-button matStepperNext>Next</button>
+<div *ngIf="draftNotStarted">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Select Number of Teams</ng-template>
+        <mat-form-field>
+            <mat-label>How Many Teams?</mat-label>
+            <mat-select [(value)]="selected">
+                <mat-option *ngFor="let opt of howManyOptions" [value]="opt">
+                {{opt}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup" class="names">
+            <ng-template matStepLabel>Input Team Names</ng-template>
+    
+            <div *ngIf="selected >= 1"><mat-form-field>
+                <input matInput placeholder="Name" formControlName="secondCtrl1" required>
+            </mat-form-field></div>
+    
+            <div *ngIf="selected >= 2"><mat-form-field>
+                <input matInput placeholder="Name" formControlName="secondCtrl2" required>
+            </mat-form-field></div>
+    
+            <div *ngIf="selected >= 3"><mat-form-field>
+                <input matInput placeholder="Name" formControlName="secondCtrl3" required>
+            </mat-form-field></div>
+    
+            <div *ngIf="selected >= 4"><mat-form-field>
+                <input matInput placeholder="Name" formControlName="secondCtrl4" required>
+            </mat-form-field></div>
+    
+            <div *ngIf="selected >= 5"><mat-form-field>
+                <input matInput placeholder="Name" formControlName="secondCtrl5" required>
+            </mat-form-field></div>
+    
+            <div *ngIf="selected >= 6"><mat-form-field>
+                <input matInput placeholder="Name" formControlName="secondCtrl6" required>
+            </mat-form-field></div>
+    
+            <div *ngIf="selected >= 7"><mat-form-field>
+                <input matInput placeholder="Name" formControlName="secondCtrl7" required>
+            </mat-form-field></div>
+    
+            <div *ngIf="selected >= 8"><mat-form-field>
+                <input matInput placeholder="Name" formControlName="secondCtrl8" required>
+            </mat-form-field></div>
+    
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Other Options</ng-template>
+        <div>
+            <mat-label>Things like, time to pick, draft order random/manual, etc</mat-label><br>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="beginDraft(secondFormGroup)">Begin Draft</button>
+        </div>
+    </mat-step>
+    </mat-horizontal-stepper>
+
+</div>
+
+<div *ngIf="!draftNotStarted">
+
+    <div class="container">
+
+        <div class="basic-detail-section section-card">
+        
+            <mat-card class="current-pick-card section-card">
+                    {{currentPicker}}, YOU ARE ON THE CLOCK
+    
+            </mat-card>
+
+            <mat-card class="section-card image-card">
+                <mat-card-title>
+                    {{currentCharacter.name}}
+                </mat-card-title>
+
+                <img mat-card-image src='../../../assets/images/character/main/{{currentCharacter.name}}.png' alt="Detailed Picture" class="specific-img">
+            </mat-card>
+
+            <mat-card class="detail-card section-card">
+                
+                <div class="statRow">
+                    <div class="statName">Batting</div>
+                    <div class="statValue">{{currentCharacter.bat}}</div>
+
+                    <div class="statName">Running</div>
+                    <div class="statValue">{{currentCharacter.run}}</div>
+                </div>
+                
+                <div class="statRow">
+                    <div class="statName">Fielding</div>
+                    <div class="statValue">{{currentCharacter.field}}</div>
+                    
+                    <div class="statName">Pitching</div>
+                    <div class="statValue">{{currentCharacter.pitch}}</div>
+                </div>
+                                
+                <div class="statRow">
+                    <div class="statName">Lean</div>
+                    <div class="statValue"><app-tri-val [value]=currentCharacter.lean></app-tri-val></div>
+
+                    <div class="statName">Con Zone</div>
+                    <div class="statValue"><app-tri-val [value]=currentCharacter.zone></app-tri-val></div>
+                </div>
+                                
+                <div class="statRow">
+                    <div class="statName">Reach Out</div>
+                    <div class="statValue"><app-tri-val [value]=currentCharacter.reachOut></app-tri-val></div>
+
+                    <div class="statName">Reach In</div>
+                    <div class="statValue"><app-tri-val [value]=currentCharacter.reachIn></app-tri-val></div>
+                </div>
+                                
+                <div class="statRow">
+                    <div class="statName">Diving</div>
+                    <div class="statValue"><app-tri-val [value]=currentCharacter.dive></app-tri-val></div>
+
+                    <div class="statName">Jumping</div>
+                    <div class="statValue"><app-tri-val [value]=currentCharacter.jump></app-tri-val></div>
+                </div>
+        
+                <div class="statRow">
+                    <div class="statName">Arm</div>
+                    <div class="statValue"><app-tri-val [value]=currentCharacter.arm></app-tri-val></div>
+
+                    <div class="statName">Size</div>
+                    <div class="statValue"><app-tri-val [value]=currentCharacter.size></app-tri-val></div>
+                </div>
+
+                <div class="statRow">
+                    <div class="statName">Chemistry</div>
+                    <div class="statValue">{{currentCharacter.chemistry}}</div>
+
+                    <div class="statName">Ability</div>
+                    <div class="statValue">{{currentCharacter.ability}}</div>
+                </div>
+    
+                <div class="statRow">
+                    <div class="statName">Pch Stamina</div>
+                    <div class="statValue">{{currentCharacter.stamina}}</div>
+
+                    <div class="statName">Pch Curve</div>
+                    <div class="statValue">{{currentCharacter.curve}}</div>
+                </div>
+                                
+                <div class="statRow">
+                    <div class="statName">Change Up</div>
+                    <div class="statValue">{{currentCharacter.changeIp}}</div>
+
+                    <div class="statName">Pch Velocity</div>
+                    <div class="statValue">{{currentCharacter.velocity}}</div>
+                </div>
+        
+                <div class="statRow">
+                    <div class="statName">Description</div>
+                    <div class="statValue">{{currentCharacter.description}}</div>
+
+                    <div class="statName">Orig. Game</div>
+                    <div class="statValue">{{currentCharacter.originGroup}}</div>
+                </div>
+
+            </mat-card>
+
+        </div>
+
+        <div class="body-section">
+
+            <div class="roster-cards">
+                
+                <ul>
+                    <li *ngFor="let roster of draftRosters">
+                        <app-draft-roster [draftRoster]="roster"></app-draft-roster>
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div class="unpicked-section">
+                <mat-grid-list cols="3" rowHeight="58px">
+                    <mat-grid-tile
+                        *ngFor="let character of unpickedCharacters; let i = index"
+                        [colspan]=1
+                        [rowspan]=1
+                        [style.background]="character.color">
+        
+                        <app-character-rect [character]=character (click)="onRosterListItemClick(i)"></app-character-rect>
+        
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+
+
+        
+
+        
     </div>
-    </form>
-</mat-step>
-<mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-    <ng-template matStepLabel>Fill out your address</ng-template>
-    <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-    </mat-form-field>
-    <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-    </div>
-    </form>
-</mat-step>
-<mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-    <button mat-button matStepperPrevious>Back</button>
-    <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-</mat-step>
-</mat-horizontal-stepper>
+   
+</div>

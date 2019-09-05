@@ -1,0 +1,105 @@
+.names {
+    display: inline;
+}
+
+.roster-cards {
+    display: flex;
+    width: 40%;
+}
+
+.roster {
+    color: black;
+}
+
+ul {
+    column-count: 2;
+    list-style-type: none;
+    margin: auto;
+    margin-top: 10px;
+}
+
+li {
+    text-align: center;
+    display: inline-block;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.body-section {
+    width: 100%;
+    display: flex;
+}
+
+.unpicked-section {
+    width: 60%;
+}
+
+.container {
+    width: 100%;
+    min-height: 1000px;
+}
+
+table {
+    width: 100%;
+}
+
+
+.details-card {
+    box-shadow: var(--card-shadow);
+    min-height: 1000px;
+}
+
+.detail-card {
+    align-content: center;
+    margin: auto;
+}
+
+.year-table {
+    
+}
+
+.basic-detail-section {
+    display: flex;
+    height: 350px;
+    justify-content: center;
+}
+
+.section-card {
+    background-color: var(--object-color);
+    color: var(object-text-color);
+    margin: 10px;
+    padding: 8px;
+}
+
+.analytics-section {
+    display: flex;
+    justify-content: center;
+}
+
+.image-card {
+    width: 220px;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.specific-img {
+    max-width: 190px;
+    max-height: 280px;
+    justify-content: center;
+    margin-left: 0px;
+}
+
+.statRow {
+    display: flex;
+    min-height: 25px;
+}
+
+.statName {
+    width: 95px;
+    text-align: right;
+}
+
+.statValue {
+    width: 145px;
+    padding-left: 12px;
+}

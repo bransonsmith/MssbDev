@@ -75,6 +75,8 @@ import { SeasonComponent } from './+season/season/season.component';
 
 import { AgGridModule } from 'ag-grid-angular';
 import { DraftComponent } from './+draft/draft/draft.component';
+import { DraftRosterComponent } from './+draft/draft-roster/draft-roster.component';
+import { DraftTileComponent } from './+draft/draft-tile/draft-tile.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +104,8 @@ import { DraftComponent } from './+draft/draft/draft.component';
     ManagerComponent,
     SeasonComponent,
     DraftComponent,
+    DraftRosterComponent,
+    DraftTileComponent,
   ],
   imports: [
     BrowserModule,

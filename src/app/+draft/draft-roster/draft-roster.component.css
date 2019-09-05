@@ -1,0 +1,10 @@
+.roster {
+    list-style: none;
+    padding: 0px;
+} 
+
+.card {
+    background-color: var(--object-bg);
+    color: var(--object-text-color);
+    margin: 10px;
+}
